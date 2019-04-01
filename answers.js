@@ -436,9 +436,27 @@ var mynewarr=addSeven(myarr);
 console.log(mynewarr);
 
 //reverse array
-
+var myarr = [3,1,6,4,2];
+function reverseArr(arr){
+    var len = arr.length;
+    var i = 0;
+    var hold = 0;
+    var halfLen = Math.floor(len/2);
+    console.log(halfLen)
+    while (i<halfLen){
+        hold = arr[i];
+        arr[i]=arr[len-i-1];
+        arr[len-i-1]=hold;
+        i++;
+    }
+    return arr;
+}
+var mynewarr = reverseArr(myarr);
+console.log(mynewarr);
 
 //outlook: negative
+
+
 //always hungry
 var myarr =  [-1,-2,-3,1,3,5,-1,-2,-5,2,2];
 function hungry(arr){
