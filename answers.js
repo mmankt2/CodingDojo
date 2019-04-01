@@ -402,3 +402,26 @@ var mynewarr = increment(myarr);
 console.log(mynewarr);
 
 //previous lengths
+//add seven to most
+//reverse array
+//outlook: negative
+//always hungry
+var myarr =  [-1,-2,-3,1,3,5,-1,-2,-5,2,2];
+function hungry(arr){
+    var len = arr.length;
+    var i = 0;
+    var yummy = 0;
+    while (i<len){
+        if (arr[i]=="food"){
+            console.log("yummy");
+            yummy = 1;
+        }
+        i++;
+    }
+    if(yummy==0){
+        console.log("I'm hungry");
+    }
+}
+hungry(myarr);
+//swap toward the center
+//scale the array
