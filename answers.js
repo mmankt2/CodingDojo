@@ -1,9 +1,3 @@
-//page 4
-//1. two
-//2. == data types can be different. === data types
-//   must be the same
-//3. boolean (true/false)
-
 //Review the first 22 pages of the Algorithm Book and complete
 //all assignments on page 16, 20, and 22.
 //Type your answers in a single file called answers.js
@@ -13,95 +7,7 @@
 
 //Author: Melissa Littleton
 
-//page 5
-console.log("Hello World");
-var message = "Welcome to the dojo";
-console.log(message);
-
-//page 6
-function sayMyName()
-{
-    console.log("My name is Melissa");
-}
-
-sayMyName();
-
-//page 7
-if (myName == "Melissa")//expression is evaluated
-{
-    //this code runs if the expression evaluates to TRUE
-    console.log("Her there Melissa, how's it going?");
-}
-else
-{
-    //this code runs if the expression evaluates to FALSE
-    console.log("Greetings human being. Have a great day!");
-}
-
-//page 8
-if (today == "Friday" && moodLevel >=100)//example of AND operator
-{
-    goDancing();
-}
-if (raining==true||distanceMiles > 3)//example of OR operator
-{
-    callUber();
-}
-if (!snowing)//example of NOT operator
-{
-    bravelyDonSomeShorts();
-}
-
-//page 9 - chaining if statements
-if (myName == "Melissa")
-{
-    console.log("Hey Melissa, how's it going?");
-}
-else if (myName=="Paul")
-{
-    console.log("Hey Paul, what schoolwork do you have today?");
-}
-else
-{
-    console.log("Greetings human. Have a great day!");
-}
-
-//page 10 - Loops
-//For loops good for a loop that runs XX times
-//while loops good for a loop that runs until a specific condition met
-
-//for (INITIALIZATION; Test; Increment/Decreemnt)
-for (var num = 1; num < 6; num = num +1)
-{
-    console.log("I'm counting! The number is ", num);
-}
-console.log("We are done. Goodbye world!");
-
-//while loop
-var num = 1;
-while (num < 6)
-{
-    console.log("I'm counting! The number is "+ num);
-    num = num +1;
-}
-console.log("We are done. Goodbye world!");
-
-//page 13 - break and continue
-//BREAK: exits the entire loop immediately
-//CONTINUE: exits the current curly brackets but continues in the loops
-
-//page 14 - functions and parameters
-function greetSomeone(person)
-{
-    if (person=="Melissa"){
-        console.log("hey Melissa, hows it going?");
-    }
-    else{
-        console.log("greetings human");
-    }
-}
-
-//Homework: page 16
+//page 16
 
 //setting and swapping
 var myNumber = 42;
