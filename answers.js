@@ -421,9 +421,23 @@ function previousLength(arr){
 var mynewarr = previousLength(myarr);
 console.log(mynewarr);
 
-
 //add seven to most
+var myarr = ["hello","my","name","is","melissa"]; 
+function addSeven(arr){
+    var len = arr.length;
+    var i = 1;
+    while (i<len){
+        arr[i]=arr[i]+7;
+        i++;
+    }
+    return arr;
+}
+var mynewarr=addSeven(myarr);
+console.log(mynewarr);
+
 //reverse array
+
+
 //outlook: negative
 //always hungry
 var myarr =  [-1,-2,-3,1,3,5,-1,-2,-5,2,2];
