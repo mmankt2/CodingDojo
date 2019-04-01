@@ -455,7 +455,21 @@ var mynewarr = reverseArr(myarr);
 console.log(mynewarr);
 
 //outlook: negative
-
+var myarr = [1,-3,5];
+function outlookNeg(arr){
+    var len = arr.length;
+    for (var i = 0;i<len;i++){
+        if (arr[i] < 0){
+            arr[i] = arr[i];
+        }
+        else {
+            arr[i] = arr[i] * -1;
+        }
+    }
+    return arr;
+}
+var mynewarr = outlookNeg(myarr);
+console.log(mynewarr);
 
 //always hungry
 var myarr =  [-1,-2,-3,1,3,5,-1,-2,-5,2,2];
@@ -475,5 +489,6 @@ function hungry(arr){
     }
 }
 hungry(myarr);
+
 //swap toward the center
 //scale the array
