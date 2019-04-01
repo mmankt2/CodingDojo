@@ -402,6 +402,26 @@ var mynewarr = increment(myarr);
 console.log(mynewarr);
 
 //previous lengths
+var myarr = ["hello","my","name","is","melissa"];
+function previousLength(arr){
+    var len = arr.length;
+    var i = 0;
+    var prevlen = 0;
+    var arr1 = arr[len-1].length; //special circumstance for the first element
+    while (i<len){
+        prevlen = arr[len-i-1].length;
+        arr[len-i]=prevlen;
+        i++;
+    }
+    arr[0]=arr1;
+    arr.pop();//special circumstance for last element
+    return arr;
+}
+
+var mynewarr = previousLength(myarr);
+console.log(mynewarr);
+
+
 //add seven to most
 //reverse array
 //outlook: negative
