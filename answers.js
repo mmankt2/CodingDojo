@@ -491,4 +491,38 @@ function hungry(arr){
 hungry(myarr);
 
 //swap toward the center
+var myarr1 = [true,42,"Ada",2,"pizza"];
+var myarr2 = [1,2,3,4,5,6];
+function swapCenter(arr){
+    var len = arr.length;
+    var i = 0;
+    var hold = 0;
+    var halfLen = Math.floor(len/2);
+    console.log(halfLen)
+    while (i<halfLen){
+        hold = arr[i];
+        arr[i]=arr[len-i-1];
+        arr[len-i-1]=hold;
+        i=i+2;
+    }
+    return arr;
+}
+
+var mynewarr1 = swapCenter(myarr1);
+var mynewarr2 = swapCenter(myarr2);
+console.log(mynewarr1);
+console.log(mynewarr2);
+
 //scale the array
+var myarr = [1,2,3,4,5,6];
+var mynum = 2;
+function scaleArr(arr,num){
+    var len = arr.length;
+    for (var i = 0; i<len; i++){
+        arr[i] = arr[i]*num;
+    }
+    return arr;
+}
+
+var mynewarr = scaleArr(myarr,mynum);
+console.log(mynewarr);
