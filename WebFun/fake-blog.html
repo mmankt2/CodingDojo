@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Dog Blog</title>
+	<meta name="description" content="A really cool site to talk about dogs.">
+</head>
+<body>
+	<h1>Melissa's Dog Blog</h1>
+	<div>
+		<img src="Love-bugs.jpg" alt="love bugs" height="200">
+		<img src="Klover.jpg" alt="Klover" height="200">
+		<img src="True.jpg" alt="True" height="200">
+	</div>
+	<p>
+		<a href="https://www.facebook.com/melissa.manktelow/videos/pcb.10215836140348839/10215836134868702/?type=3&theater">
+			If we're facebook friends, you can click here to see them play!
+		</a>
+	</p>
+	<p>Klover's favorite things
+		<ul>
+			<li>Tearing up Melissa's stuffed animals</li>
+			<li>Getting treats while Melissa cooks in the kitchen</li>
+			<li>Giving kisses</li>
+		</ul>
+	</p>
+	<p>True's favorite things
+		<ul>
+			<li>Laying in the sun</li>
+			<li>Eating</li>
+			<li>Playing tug of war</li>
+		</ul>
+	</p>
+	
+	<h2>Commands we know</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Command</th>
+				<th>True</th>
+				<th>Klover</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>sit</td>
+				<td>Yes</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>stay</td>
+				<td>Yes</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>down</td>
+				<td>Yes</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>heel</td>
+				<td>Yes</td>
+				<td>Only when there are no other dogs around</td>
+			</tr>
+			<tr>
+				<td>fetch</td>
+				<td>Yes</td>
+				<td>No, I play keep-away instead</td>
+			</tr>
+			<tr>
+				<td>Go to your cage</td>
+				<td>Yes, I love my cage</td>
+				<td>Yes, I get treats in my cage</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<form>
+		<p>
+			<label>Email:<input type="text" name="email"></label>
+		</p>
+		<p>Receive weekly updates on the love bugs:
+			<div>
+				<label>Yes please<input type="radio" name="updates" value="yes"></label>
+			</div>
+			<div>
+				<label>No thanks<input type="radio" name="updates" value="no"></label>
+			</div>
+		</p>
+
+		<p>Survey: Select your favorite dog(s) this week 
+			<label>Klover
+				<input type="checkbox" name="fav_dog" value="klover">
+			</label>
+			<label>True
+				<input type="checkbox" name="fav_dog" value="true">
+			</label>
+		</p>
+		<p>Select your favorite dog breed:
+			<select name="fav_breed">
+				<option value="pit">Pit Bull</option>
+				<option value="terrier">Terrier</option>
+				<option value="golden">Golden Retriever</option>
+				<option value="lab">Labrador</option>
+				<option value="doodle">Some type of doodle</option>
+				<option value="other">Other</option>
+			</select>
+		</p>
+		<input type="submit" value="Send">
+	</form>
+</body>
+</html>
