@@ -1,0 +1,30 @@
+p{
+    background-color:grey;
+    display:inline-block;
+    width:20%;
+    margin:5px;
+    padding:20px;
+    vertical-align:top;
+}
+a{
+    background-color: yellow;
+    margin: 10px;
+    color:black;
+    padding:10px;
+
+}
+/*ul{
+    background-color:blue;
+    display:inline;
+}*/
+#nav-menu{
+    list-style-type:none;/*get rid of bullets*/
+}
+#nav-menu li{
+    display:inline;
+}
+/*
+ul li{
+    background-color:green;
+    display:inline;
+}*/

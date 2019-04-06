@@ -1,0 +1,33 @@
+p{
+    color:blue;
+    width:100%;
+    font-family:"helvetica neue", arial, verdana, sans-serif;
+    font-size:1em;
+}
+#important{
+    font-size:3.6em;
+    font-style:italic;
+    font-weight:bold;
+}
+.info{
+    background-color:rgb(83, 173, 83);
+    border:1px solid black;
+    border-radius:5px;
+}
+div{
+    background-image: url("True.jpg");
+    background-position: center;
+    background-size:auto;
+    background-repeat:no-repeat;
+}
+a{
+    color:rgb(255,255,255);
+    text-decoration:underline;
+}
+h1{
+    text-align:center;
+}
+p span {
+    font-weight:bold;
+    color:blueviolet;
+}
