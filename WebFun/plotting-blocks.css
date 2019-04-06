@@ -4,16 +4,16 @@
  padding: 0px;
 }
 #wrapper{
- width: 100%;
- background-color: silver;
+ width: 970px;
+ background-color: rgb(68, 44, 122);
  margin: 0px;
- padding: 1%;
+ padding: 0px;
 }
 #header{
  min-height: 150px;
- width:98%;
- background-color: green;
- margin: 0px 0px 1% 0px; 
+ width:960px;
+ background-color: rgb(185, 18, 18);
+ margin: 2px 2px 2px 2px; 
 }
 #navigation{
  min-height: 300px;
