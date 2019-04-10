@@ -1,0 +1,54 @@
+/*resets, outline,container,display,box model*/
+/*reset is a tool to make things look the same in all browser*/
+
+/*select all elements and reset*/
+*{
+  margin:0px;
+  padding:0px;
+  outline:1px solid black; /*sets an outline on all elements*/
+  color:white;
+}
+#container{
+  margin:0px auto;
+  width:1000px;
+  background-color:gray;
+  padding:10px;
+}
+.one-half{
+  display:inline-block;
+  width:470px;
+  min-height:100px;
+  background-color:red;
+  margin:10px;
+}
+.blue {
+  min-height:100px;
+  background-color:blue;
+  width:980px;
+  margin:10px;
+}
+.one-third{
+  min-height:100px;
+  background-color:yellow;
+  display:inline-block;
+  width:300px;
+  margin:10px;
+}
+.green{
+  min-height:100px;
+  background-color:green;
+  width:980px;
+}
+.purple{
+  min-height:70px;
+  width:70px;
+  margin:10px;
+  background-color:purple;
+  display:inline-block;
+}
+.invisible{
+  min-height:70px;
+  width:780px;
+  display:inline-block;
+  outline:none;
+}
