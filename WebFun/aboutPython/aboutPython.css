@@ -1,0 +1,46 @@
+/*resets, outline,container,display,box model*/
+/*reset is a tool to make things look the same in all browser*/
+
+/*select all elements and reset*/
+*{
+  margin:0px;
+  padding:0px;
+  /*outline:1px solid black; /*sets an outline on all elements*/
+  color:white;
+}
+#container{
+  margin:0px auto;
+  width:1000px;
+  background-color:gray;
+  padding:10px;
+}
+.title *{
+  height:50px;
+  display:inline-block;
+  vertical-align:top;
+}
+.title img:nth-child(1){
+  margin-left:270px;
+}
+.main-content img{
+  height:140px;
+  width:140px;
+  margin:10px;
+  padding:10px;
+  border:4px solid black;
+  display:inline-block;
+}
+.col1,.col3,.col5{
+  display:inline-block;
+  width:170px;
+}
+.col2,.col4{
+  display:inline-block;
+  width:170px;
+}
+.col1 img,.col3 img,.col5 img{
+  background-color:pink;
+}
+.col2,.col4 img{
+  background-color:none;
+}
