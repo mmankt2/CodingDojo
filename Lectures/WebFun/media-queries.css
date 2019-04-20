@@ -1,0 +1,10 @@
+@media only screen and (max-width: 480px){
+  .sm-0{
+    display:none;
+  }
+}
+@media only screen and (min-width:481px){
+  .med-1{
+    width:25%;
+  }
+}

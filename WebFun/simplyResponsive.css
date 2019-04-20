@@ -1,0 +1,43 @@
+*{
+  margin:0px;
+  padding:0px;
+  outline:1px solid gray;
+}
+#container{
+  background:white;
+  padding:10px;
+}
+.title h1{
+  background-color:gray;
+}
+#info{
+  background-color:lightgray;
+  margin-top:10px;
+}
+.end{
+  background-color:yellow;
+}
+@media only screen and (max-width: 480px){
+  .med-1{
+    display:none;
+  }
+  .lar-2{
+    display:none;
+  }
+}
+@media only screen and (min-width:481px){
+  .sm-0{
+    display:none;
+  }
+  .lar-2{
+    display:none;
+  }
+}
+@media only screen and (min-width:1024px){
+  .sm-0{
+    display:none;
+  }
+  .med-1{
+    display:none;
+  }
+}
