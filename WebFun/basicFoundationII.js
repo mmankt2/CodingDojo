@@ -174,17 +174,62 @@ console.log(reversearr);
 //containing all the values of the original array, but make them all 
 //negative (not simply multiplied by -1). Given [1,-3,5], return
 // [-1,-3,-5].
+function outlookNeg(arr){
+  var len = arr.length;
+  var newarr=arr;
+  for (var i = 0;i<len;i++){
+    if (newarr[i]>0){
+      newarr[i]=newarr[i]*(-1);
+    }
+  }
+  return newarr;
+}
+var newarr=outlookNeg([1,-3,5]);
+console.log(newarr);
 
 //12.Always Hungry - Create a function that accepts an array, and prints 
 //"yummy" each time one of the values is equal to "food".  If no array 
 //values are "food", then print "I'm hungry" once.
+function alwaysHungry(arr){
+  var len = arr.length;
+  var count = 0;
+  for (var i=0;i<len;i++){
+    if (arr[i]=="food"){
+      console.log("yummy");
+      count++;
+    }
+  }
+  if (count==0){
+    console.log("I'm hungry");
+  }
+}
+alwaysHungry([1,2,3,33]);
 
 //13.Swap Toward the Center - Given an array, swap the first and last 
 //values, third and third-to-last values, etc.  Example: 
 //swapTowardCenter([true,42,"Ada",2,"pizza"]) turns the array into 
 //["pizza", 42, "Ada", 2, true].  swapTowardCenter([1,2,3,4,5,6]) turns 
 //the array into [6,2,4,3,5,1].  No need to return the array this time.
+function swapTowardCenter(arr){
+  var len = arr.length;
+  var hold=0;
+  for (var i=0;i<len/2;i+=2){
+    hold = arr[i];
+    arr[i]=arr[len-1-i];
+    arr[len-1-i]=hold;
+  }
+  console.log(arr)
+}
+swapTowardCenter([1,2,3,4,5,6]);
 
 //14.Scale the Array - Given an array arr and a number num, multiply all 
 //values in the array arr by the number num, and return the changed array 
 //arr.  For example, scaleArray([1,2,3], 3) should return [3,6,9].
+function scaleArray(arr,num){
+  var len=arr.length;
+  for(var i=0;i<len;i++){
+    arr[i]=arr[i]*num;
+  }
+  return arr;
+}
+console.log(scaleArray([1,2,3],3));
