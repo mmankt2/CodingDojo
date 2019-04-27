@@ -126,3 +126,13 @@ function double(arr){
 doubleArray = double([4, "Ulysses", 42, false,2]);
 console.log(doubleArray);
 
+//fibonacci with recursion
+function fib(n){
+  if (n==1 or n==0){
+    return n;
+  }
+
+  return fib(n-1)+fib(n-2);
+}
+
+console.log(fib(1));
