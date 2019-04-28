@@ -126,7 +126,7 @@ function double(arr){
 doubleArray = double([4, "Ulysses", 42, false,2]);
 console.log(doubleArray);
 
-//fibonacci with recursion
+//Create a function Fib(n) where it returns the nth Fibonacci number.  Use recursion for this.
 function fib(n){
   if (n==1 or n==0){
     return n;
@@ -136,3 +136,5 @@ function fib(n){
 }
 
 console.log(fib(1));
+
+//Recursive Fill - please see below.

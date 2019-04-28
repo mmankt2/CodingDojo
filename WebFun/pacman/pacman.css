@@ -1,0 +1,80 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+body{
+  background-color:black;
+  margin:0px;
+  padding:0px;
+}
+div#world{
+  position:relative;
+}
+div.row div{
+width:20px;
+height:20px;
+display:inline-block;
+margin-top:-4px;
+}
+div.brick{
+  background-color:blue;
+}
+div.coin{
+  background-image:url("coin.png");
+  background-size:10px;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+div.empty{
+  background:none;
+}
+div#ghost{
+  background-image:url("ghost.gif");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  width:20px;
+  height:20px;
+  top:100px;
+  left:100px;
+  position:absolute;
+  margin-top:-4px;
+}
+div#pacman{
+  background-image:url("pacman.gif");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  width:20px;
+  height:19px;
+  position:absolute;
+  top:20px;
+  left:20px;
+  margin-top:-4px;
+}
+div#score{
+  border:1px solid white;
+  height:30px;
+  width:40px;
+  position:absolute;
+  top:10px;
+  left:210px;
+  color:white;
+  padding:5px;
+}
+div.cherry{
+  background-image:url("cherry.png");
+  background-size:cover;
+  height:20px;
+  width:20px;
+  margin-top:-5px;
+}
+div#game_over{
+  display:none;
+  color:white;
+  size:30px;
+  font-weight:bold;
+  position:absolute;
+  left:50px;
+  top:100px;
+}
