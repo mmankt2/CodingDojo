@@ -1,0 +1,29 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+h1{
+  margin:1%;
+  width:100%;
+}
+button{
+  margin:1%;
+}
+div.row{
+  width:100%;
+  display:block;
+  margin-top:1%;
+}
+div.row div{
+  width:22%;
+  min-height:100px;
+  display:inline-block;
+  border:1px solid black;
+  margin:0% 1%;
+}
+div.ninja{
+  background-image:url("disappearingNinja.jpg");
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
