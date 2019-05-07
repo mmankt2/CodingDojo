@@ -1,10 +1,16 @@
 $(document).ready(function(){
 
-console.log('working in js');
-$('img').click(function(){
-  //console.log('clicked image');
-  //console.log($(this).attr('alt-src'));
- $(this).attr('src',$(this).attr('alt-src')); 
+  $('img').click(function(){
+  var imgattr = $(this).attr('src');
+  
+  if (/cat/.test(imgattr)){
+    imgattr=imgattr.replace(/cat/g,'ninja');
+  }
+  else {
+    imgattr=imgattr.replace(/ninja/g,'cat');  
+  }
+
+  $(this).attr('src',imgattr);
 });
 
 })//end of document.ready
