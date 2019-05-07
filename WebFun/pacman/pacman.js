@@ -93,7 +93,7 @@ function displayGhost(){
 }
 
 setInterval(function(){ displayCherry() },5000);
-setInterval(function(){displayGhost()},1000);
+setInterval(function(){displayGhost()},200);
 
 document.onkeydown = function(e){
   //console.log(e.keyCode);
