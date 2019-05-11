@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>jquery advanced</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script>
+  
+  function attach_handlers(){
+    $('h3').click(function(){
+      alert('h3 was clicked');
+    })
+  }
+  $(document).ready(function(){
+
+    attach_handlers();
+    $('button').click(function(){
+      $('div').append('<h3>click to see a message</h3>');
+      attach_handlers();
+    })
+  })
+  
+  </script>
+  </head>
+
+  <body>
+    <h1>Advanced jQuery</h1>
+    <button>click to add dynamic content</button>
+    <div id='new_content'>
+    </div>
+  </body>
+</html>

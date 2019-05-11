@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>jquery forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+      
+      $('#form1').submit(function(){
+        alert('you are submitting me!');
+        console.log($(this).serialize());//this takes all the info in the form and puts it 
+                    //into a string that can be handled by the process.php program
+                    //this attaches the name attributes to the value, ie first_name: Melissa&last_name:Littleton&email:mmankt2@gmail.com
+        return false; //this will prevent the page from going to 'process.php'
+      });
+
+      $('.btn').click(function(){
+        $('#form1').submit();
+      })
+
+      $('#myDiv').children('h3').css('background-color','green');
+
+      $('h3').click(function(){
+        $(this).parent().append('<h2>Howdy coding dojo</h2>');
+      })
+
+      $('p').click(function(){
+        $(this).siblings().hide();
+      })
+
+
+    });
+    
+    </script>
+    </head>
+  
+    <body>
+      <h1>Advanced jQuery-Forms</h1>
+      <form id='form1' action='process.php' method='post'>
+        First Name<input type='text' name='first_name'>
+        Last name<input type='text' name='last_name'>
+        Email<input type='text' name='email'>
+        <input type='submit' value='submit'>
+      </form>
+      <button class='btn'>click me to use .submit() differently!</button>
+      <div id='myDiv'>
+        <p>Here is a paragraph. it is a beautiful paragraph.</p>
+        <h3>michael choi</h3>
+        <h3>John Supsupin</h3>
+        <h3>Trey Villafane</h3>
+      </div>
+    </body>
+  </html>
