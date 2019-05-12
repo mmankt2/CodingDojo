@@ -1,0 +1,209 @@
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ pwd
+/media/sf_C_DRIVE/CodingDojo/WebFun
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ ls
+1942                      Exam                       pacman
+aboutPython               fake-blog.html             paperAlgosII.js
+algorithms.js             gettersSetters.html        paperAlgosI.js
+arraysReintro.js          getting-started.css        playingWithObject.js
+basicFoundationII.js      getting-started.html       plotting-blocks.css
+basicFoundationI.txt      hello_world.html           plotting-blocks.html
+basicFunctionsI.js        hoverInOut                 plotting-blocks-responsive.css
+block-inline.css          indentation_practice.html  portfolio
+block-inline.html         intermediateFoundation.js  portfolio.css
+Bootstrap-20190416.html   javascript-basics.css      Portfolio.html
+box-model.css             javascript-basics.html     positioning.css
+box-model.html            jQUery-Advanced.html       positioning.html
+box-model-responsive.css  jqueryForms.html           rf
+colorClicker.html         jQueryFunctions.css        rf-index.html
+common-tags.html          jQueryFunctions.html       simplyResponsive.css
+DebuggingJQuery           jQueryFunctions.js         simplyResponsive.html
+disappearingNinja.css     Klover.jpg                 terminal.txt
+disappearingNinja.html    Love-bugs.jpg              True.jpg
+disappearingNinja.jpg     moreArrays.js              Week 4 - Session 1 - FizzBuzz.pdf
+disappearingNinja.js      my-registration-form.html
+displayBlocks             NinjatoCat
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ ls -l
+total 538
+drwxrwx--- 1 root vboxsf   4096 Apr 27 21:49 1942
+drwxrwx--- 1 root vboxsf   4096 Apr  9 22:16 aboutPython
+-rwxrwx--- 1 root vboxsf    729 Apr 19 21:01 algorithms.js
+-rwxrwx--- 1 root vboxsf   1513 Apr 20 10:35 arraysReintro.js
+-rwxrwx--- 1 root vboxsf   6872 Apr 24 20:15 basicFoundationII.js
+-rwxrwx--- 1 root vboxsf   5125 Apr 21 16:58 basicFoundationI.txt
+-rwxrwx--- 1 root vboxsf   1955 Apr 21 09:11 basicFunctionsI.js
+-rwxrwx--- 1 root vboxsf    435 Apr  6 14:00 block-inline.css
+-rwxrwx--- 1 root vboxsf    652 Apr  6 12:02 block-inline.html
+-rwxrwx--- 1 root vboxsf   1918 Apr 16 18:48 Bootstrap-20190416.html
+-rwxrwx--- 1 root vboxsf    319 Apr  6 12:16 box-model.css
+-rwxrwx--- 1 root vboxsf    516 Apr 21 09:48 box-model.html
+-rwxrwx--- 1 root vboxsf    638 Apr 21 10:04 box-model-responsive.css
+-rwxrwx--- 1 root vboxsf   2387 May 11 12:50 colorClicker.html
+-rwxrwx--- 1 root vboxsf   1855 Apr  5 17:07 common-tags.html
+drwxrwx--- 1 root vboxsf   4096 May  7 13:44 DebuggingJQuery
+-rwxrwx--- 1 root vboxsf    412 May  5 12:03 disappearingNinja.css
+-rwxrwx--- 1 root vboxsf    409 May  5 12:02 disappearingNinja.html
+-rwxrwx--- 1 root vboxsf  11638 May  5 10:48 disappearingNinja.jpg
+-rwxrwx--- 1 root vboxsf    961 May  5 12:02 disappearingNinja.js
+drwxrwx--- 1 root vboxsf   4096 Apr  9 20:44 displayBlocks
+drwxrwx--- 1 root vboxsf      0 Apr 14 08:44 Exam
+-rwxrwx--- 1 root vboxsf   2544 Apr  5 21:16 fake-blog.html
+-rwxrwx--- 1 root vboxsf    784 May  4 14:22 gettersSetters.html
+-rwxrwx--- 1 root vboxsf    582 Apr  6 11:29 getting-started.css
+-rwxrwx--- 1 root vboxsf    437 Apr  6 11:30 getting-started.html
+-rwxrwx--- 1 root vboxsf     75 Apr  6 13:39 hello_world.html
+drwxrwx--- 1 root vboxsf   4096 May  7 14:18 hoverInOut
+-rwxrwx--- 1 root vboxsf    150 Apr  4 17:28 indentation_practice.html
+-rwxrwx--- 1 root vboxsf   3791 Apr 27 13:56 intermediateFoundation.js
+-rwxrwx--- 1 root vboxsf   1230 Apr  6 17:33 javascript-basics.css
+-rwxrwx--- 1 root vboxsf   3109 Apr  6 16:39 javascript-basics.html
+-rwxrwx--- 1 root vboxsf    624 May 11 12:01 jQUery-Advanced.html
+-rwxrwx--- 1 root vboxsf   1656 May 11 12:31 jqueryForms.html
+-rwxrwx--- 1 root vboxsf    684 May  5 10:12 jQueryFunctions.css
+-rwxrwx--- 1 root vboxsf   2709 May  5 10:12 jQueryFunctions.html
+-rwxrwx--- 1 root vboxsf   2171 May  5 10:12 jQueryFunctions.js
+-rwxrwx--- 1 root vboxsf  62720 Apr  5 20:21 Klover.jpg
+-rwxrwx--- 1 root vboxsf  52612 Apr  5 20:21 Love-bugs.jpg
+-rwxrwx--- 1 root vboxsf   1609 Apr 20 11:54 moreArrays.js
+-rwxrwx--- 1 root vboxsf   1226 Apr  5 21:16 my-registration-form.html
+drwxrwx--- 1 root vboxsf   4096 May  7 05:40 NinjatoCat
+drwxrwx--- 1 root vboxsf   4096 May  7 13:52 pacman
+-rwxrwx--- 1 root vboxsf   2090 Apr 20 10:12 paperAlgosII.js
+-rwxrwx--- 1 root vboxsf   1950 Apr 20 09:36 paperAlgosI.js
+-rwxrwx--- 1 root vboxsf    257 Apr 27 13:12 playingWithObject.js
+-rwxrwx--- 1 root vboxsf    866 Apr  7 18:09 plotting-blocks.css
+-rwxrwx--- 1 root vboxsf    588 Apr 21 10:17 plotting-blocks.html
+-rwxrwx--- 1 root vboxsf   1145 Apr 21 10:24 plotting-blocks-responsive.css
+drwxrwx--- 1 root vboxsf   8192 Apr 17 19:59 portfolio
+-rwxrwx--- 1 root vboxsf   2300 Apr  7 22:08 portfolio.css
+-rwxrwx--- 1 root vboxsf   5729 Apr  7 22:08 Portfolio.html
+-rwxrwx--- 1 root vboxsf    373 Apr  6 14:07 positioning.css
+-rwxrwx--- 1 root vboxsf    352 Apr  6 14:07 positioning.html
+drwxrwx--- 1 root vboxsf      0 Apr 27 09:32 rf
+-rwxrwx--- 1 root vboxsf   2062 Apr 27 13:52 rf-index.html
+-rwxrwx--- 1 root vboxsf    606 Apr 21 10:06 simplyResponsive.css
+-rwxrwx--- 1 root vboxsf    988 Apr 21 10:06 simplyResponsive.html
+-rwxrwx--- 1 root vboxsf      0 May 11 12:54 terminal.txt
+-rwxrwx--- 1 root vboxsf  81401 Apr  5 20:20 True.jpg
+-rwxrwx--- 1 root vboxsf 139091 Apr 23 19:28 Week 4 - Session 1 - FizzBuzz.pdf
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ ls -a
+.                         displayBlocks              NinjatoCat
+..                        .DS_Store                  pacman
+1942                      Exam                       paperAlgosII.js
+aboutPython               fake-blog.html             paperAlgosI.js
+algorithms.js             gettersSetters.html        playingWithObject.js
+arraysReintro.js          getting-started.css        plotting-blocks.css
+basicFoundationII.js      getting-started.html       plotting-blocks.html
+basicFoundationI.txt      hello_world.html           plotting-blocks-responsive.css
+basicFunctionsI.js        hoverInOut                 portfolio
+block-inline.css          indentation_practice.html  portfolio.css
+block-inline.html         intermediateFoundation.js  Portfolio.html
+Bootstrap-20190416.html   javascript-basics.css      positioning.css
+box-model.css             javascript-basics.html     positioning.html
+box-model.html            jQUery-Advanced.html       rf
+box-model-responsive.css  jqueryForms.html           rf-index.html
+colorClicker.html         jQueryFunctions.css        simplyResponsive.css
+common-tags.html          jQueryFunctions.html       simplyResponsive.html
+DebuggingJQuery           jQueryFunctions.js         terminal.txt
+disappearingNinja.css     Klover.jpg                 True.jpg
+disappearingNinja.html    Love-bugs.jpg              Week 4 - Session 1 - FizzBuzz.pdf
+disappearingNinja.jpg     moreArrays.js
+disappearingNinja.js      my-registration-form.html
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ cd .
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo/WebFun$ cd ..
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo$ pwd
+/media/sf_C_DRIVE/CodingDojo
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE/CodingDojo$ cd /
+melissa@melissa-VirtualBox:/$ ls
+bin   cdrom  etc   initrd.img      lib         media  opt   root  sbin  srv  tmp  var      vmlinuz.old
+boot  dev    home  initrd.img.old  lost+found  mnt    proc  run   snap  sys  usr  vmlinuz
+melissa@melissa-VirtualBox:/$ cd media
+melissa@melissa-VirtualBox:/media$ mkdir new_directory_name
+mkdir: cannot create directory ‘new_directory_name’: Permission denied
+melissa@melissa-VirtualBox:/media$ ls
+melissa  sf_C_DRIVE  sf_Dropbox
+melissa@melissa-VirtualBox:/media$ cd melissa/
+melissa@melissa-VirtualBox:/media/melissa$ mkdir new_directory_name
+mkdir: cannot create directory ‘new_directory_name’: Permission denied
+melissa@melissa-VirtualBox:/media/melissa$ ls -l
+total 0
+melissa@melissa-VirtualBox:/media/melissa$ cd ../
+melissa@melissa-VirtualBox:/media$ cd sf_C_DRIVE/
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ mkdir new_directory_name
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ mkdir new_directory_name_2
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ touch new_directory_name_2/test_file.txt
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ rm new_directory_name
+rm: cannot remove 'new_directory_name': Is a directory
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ rmdir new_directory_name
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ rmdir new_directory_name_2
+rmdir: failed to remove 'new_directory_name_2': Directory not empty
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ rm -rf new_directory_name_2
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ mkdir new_directory_name_2
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ cp new_directory_name_2/ new_directory_name_3/
+cp: omitting directory 'new_directory_name_2/'
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ ls
+CodingDojo              inetpub               ProgramData          swapfile.sys               Users
+Debian                  Intel                 Program Files        SWSetup                    Windows
+Documents and Settings  new_directory_name_2  Program Files (x86)  SYSTEM.SAV
+hiberfil.sys            pagefile.sys          Recovery             System Volume Information
+hp                      PerfLogs              $RECYCLE.BIN         Ubuntu
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ l
+CodingDojo/              inetpub/               ProgramData/          swapfile.sys*               Users/
+Debian/                  Intel/                 Program Files/        SWSetup/                    Windows/
+Documents and Settings/  new_directory_name_2/  Program Files (x86)/  SYSTEM.SAV/
+hiberfil.sys*            pagefile.sys*          Recovery/             System Volume Information/
+hp/                      PerfLogs/              $RECYCLE.BIN/         Ubuntu/
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ ls -l
+total 10824520
+drwxrwx--- 1 root vboxsf       8192 May  4 13:04 CodingDojo
+drwxrwx--- 1 root vboxsf       4096 Apr  2 22:46 Debian
+drwxrwx--- 1 root vboxsf       4096 Feb 28 00:14 Documents and Settings
+-rwxrwx--- 1 root vboxsf 3382525952 May  5 07:42 hiberfil.sys
+drwxrwx--- 1 root vboxsf          0 Sep 28  2018 hp
+drwxrwx--- 1 root vboxsf          0 Feb 28 01:34 inetpub
+drwxrwx--- 1 root vboxsf          0 Feb 28 00:13 Intel
+drwxrwx--- 1 root vboxsf          0 May 11 12:58 new_directory_name_2
+-rwxrwx--- 1 root vboxsf 7433265152 May 11 10:24 pagefile.sys
+drwxrwx--- 1 root vboxsf          0 Sep 15  2018 PerfLogs
+drwxrwx--- 1 root vboxsf       8192 May  5 07:42 ProgramData
+drwxrwx--- 1 root vboxsf       8192 Apr  2 09:30 Program Files
+drwxrwx--- 1 root vboxsf       8192 Apr  2 09:30 Program Files (x86)
+drwxrwx--- 1 root vboxsf          0 Feb 28 00:05 Recovery
+drwxrwx--- 1 root vboxsf       4096 Sep 28  2018 $RECYCLE.BIN
+-rwxrwx--- 1 root vboxsf  268435456 May  5 07:42 swapfile.sys
+drwxrwx--- 1 root vboxsf       4096 Oct 21  2018 SWSetup
+drwxrwx--- 1 root vboxsf       4096 Sep 28  2018 SYSTEM.SAV
+drwxrwx--- 1 root vboxsf       4096 May  4 13:43 System Volume Information
+drwxrwx--- 1 root vboxsf       4096 Mar 29 14:44 Ubuntu
+drwxrwx--- 1 root vboxsf       4096 Feb 28 00:14 Users
+drwxrwx--- 1 root vboxsf      16384 May  5 07:38 Windows
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ cp new_directory_name_2/ new_directory_name_3
+cp: omitting directory 'new_directory_name_2/'
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ cp -rf new_directory_name_2/ new_directory_name_3
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ ls -l
+total 10824520
+drwxrwx--- 1 root vboxsf       8192 May  4 13:04 CodingDojo
+drwxrwx--- 1 root vboxsf       4096 Apr  2 22:46 Debian
+drwxrwx--- 1 root vboxsf       4096 Feb 28 00:14 Documents and Settings
+-rwxrwx--- 1 root vboxsf 3382525952 May  5 07:42 hiberfil.sys
+drwxrwx--- 1 root vboxsf          0 Sep 28  2018 hp
+drwxrwx--- 1 root vboxsf          0 Feb 28 01:34 inetpub
+drwxrwx--- 1 root vboxsf          0 Feb 28 00:13 Intel
+drwxrwx--- 1 root vboxsf          0 May 11 12:58 new_directory_name_2
+drwxrwx--- 1 root vboxsf          0 May 11 12:59 new_directory_name_3
+-rwxrwx--- 1 root vboxsf 7433265152 May 11 10:24 pagefile.sys
+drwxrwx--- 1 root vboxsf          0 Sep 15  2018 PerfLogs
+drwxrwx--- 1 root vboxsf       8192 May  5 07:42 ProgramData
+drwxrwx--- 1 root vboxsf       8192 Apr  2 09:30 Program Files
+drwxrwx--- 1 root vboxsf       8192 Apr  2 09:30 Program Files (x86)
+drwxrwx--- 1 root vboxsf          0 Feb 28 00:05 Recovery
+drwxrwx--- 1 root vboxsf       4096 Sep 28  2018 $RECYCLE.BIN
+-rwxrwx--- 1 root vboxsf  268435456 May  5 07:42 swapfile.sys
+drwxrwx--- 1 root vboxsf       4096 Oct 21  2018 SWSetup
+drwxrwx--- 1 root vboxsf       4096 Sep 28  2018 SYSTEM.SAV
+drwxrwx--- 1 root vboxsf       4096 May  4 13:43 System Volume Information
+drwxrwx--- 1 root vboxsf       4096 Mar 29 14:44 Ubuntu
+drwxrwx--- 1 root vboxsf       4096 Feb 28 00:14 Users
+drwxrwx--- 1 root vboxsf      16384 May  5 07:38 Windows
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ open .
+Couldn't get a file descriptor referring to the console
+melissa@melissa-VirtualBox:/media/sf_C_DRIVE$ 
