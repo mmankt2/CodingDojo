@@ -1,0 +1,14 @@
+/CodingDojo/Python$ ls -l
+total 0
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 django
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 django_full_stack
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 django_intro
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 django_orm
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 flask
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 flask_fundamentals
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 flask_mysql
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 fundamentals
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 my_environments
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 OOP
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 python
+drwxrwx--- 1 root vboxsf 0 May 14 18:48 python_stack

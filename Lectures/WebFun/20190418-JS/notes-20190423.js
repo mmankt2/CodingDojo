@@ -12,3 +12,6 @@ obj["student2"]; //Heather
 
 //below is an array of objects
 var users = [{name:"Michael",age:37},{name:"John",age:30},{name:"David",age:27}];
+
+users[0].name;//Michael
+users[0].age;//37
