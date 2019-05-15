@@ -1,0 +1,9 @@
+Created a requirements.txt file that can re-create the exact versions of all packages in my virtual environment. 
+The 'pip freeze' command shows the list of packages and their versions in a way that they can be installed easily.
+The 'pip list' command shows packages in the virtual environment or in the normal environment.  
+  There are fewer packages in my virtual environment than in the normal environment.  
+  The virtual environment only has 5 packages. 
+'pip install Django==1.11.9' will install the Django package in my virtual environment on version 1.11.9.
+'deactivate' closes the virtual environment'
+The second time I ran 'pip install Django==1.11.9' the stdout said the packages were already installed, so nothing happened.
+
