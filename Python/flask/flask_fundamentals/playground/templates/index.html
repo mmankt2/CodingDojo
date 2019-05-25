@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Playground 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <style>
+  h1{
+    width:100%;
+    text-align:center;
+  }
+  div{
+    width:80%;
+    margin-left:10%;
+  }
+  #blue_box{
+    width: 30%;
+    height:200px;
+    background-color: blue;
+    border: 1px solid black;
+    display:inline-block;
+    margin-left:20px;
+    margin-top:20px;
+  }
+  </style>
+  <script src="main.js"></script>
+</head>
+<body>
+  <h1>Welcome!</h1>
+  <div>
+    {% if x: %}
+      {% for i in range(x): %}
+        <div id="blue_box"></div>
+      {% endfor %}
+    {% else %}
+      <div id="blue_box"></div>
+      <div id="blue_box"></div>
+      <div id="blue_box"></div>
+    {% endif %}
+    {% if html_color: %}
+      <style>
+      #blue_box{
+        background-color:{{html_color}}
+      }
+      </style>
+    {% endif %}
+</div>
+</body>
+</html>
