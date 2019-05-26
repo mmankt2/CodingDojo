@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dojo Survey Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href={{url_for('static', filename="dojo_survey.css")}} />
+  <script src="main.js"></script>
+</head>
+<body>
+  <div>
+    <form action="/result" method='post' id="usrform">
+      <div id="labels">
+        <p>Your Name:</p>
+        <p>Dojo Location:</p>
+        <p>Favorite Language:</p>
+      </div>
+      <div id="options">
+        <p><input type="text" name="name"></p>
+        <p><select name="location">
+            <option value="chicago">Chicago</option>
+            <option value="cali">California</option>
+            </select></p>
+        <p><select name="language" id="language">
+            <option value="Python">Python</option>
+            <option value="Perl">Perl</option>
+            <option value="C#">C#</option>
+            </select></p>
+      </div>
+      <p>Comment (optional):</p>
+      <textarea name="comment" form="usrform">Enter text here...</textarea>
+      <input type="submit" value="Button" id="button">
+    </form>
+
+  </div>
+
+
+</body>
+</html>

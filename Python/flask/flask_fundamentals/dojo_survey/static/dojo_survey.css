@@ -1,0 +1,29 @@
+div{
+  margin: 30px;
+  border: 2px solid black;
+}
+form div{
+  margin:1% 1% 1% 0px;
+  width: 48%;
+  display:inline-block;
+  border:none;
+}
+form div input, form div select{
+  width: 90%;
+}
+form textarea{
+  width: 95%;
+  margin: 1%;
+}
+form p{
+  margin:1%;
+}
+#button{
+  background-color:green;
+  width:10%;
+  height:20px;
+  font-weight:bold;
+  color:black;
+  margin: 1%;
+  
+}
