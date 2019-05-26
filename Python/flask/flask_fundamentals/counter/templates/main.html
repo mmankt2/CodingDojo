@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Counter</title>
+  </head>
+  <body>
+    <h1>Guess a number between 1 and 10...</h1>
+    <form action="/guess" method="POST">
+      <label for="guess">Guess:</label>
+      <input type="number" name="guess">
+      <input type="submit" value="Submit">
+    </form>
+    <h3>Last Guess: {{guess}}</h3>
+    {% if guess: %}
+    <h3>{{status}}</h3>
+    {% endif %}
+  </body>
+</html>
