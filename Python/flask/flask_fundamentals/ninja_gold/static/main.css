@@ -1,0 +1,43 @@
+#forms{
+  border: 1px solid black;
+  width:20%;
+  margin:2%;
+  display:inline-block;
+  justify-content:center;
+  text-align:center;
+  padding-bottom:1em;
+}
+#activities{
+  border: 1px solid black;
+  width: 94%;
+  margin: 2%;
+  height:10em;
+  overflow:scroll;
+}
+#activities p{
+  margin:1%;
+}
+label{
+  margin:2%;
+  display:inline-block;
+  justify-content:left;
+}
+#score{
+  border:1px solid black;
+  height:18px;
+  width:4em;
+  justify-content:left;
+  vertical-align:top;
+  display:inline-block;
+  margin: 2%;
+  padding-left:2px;
+}
+p{
+  margin:2%;
+}
+#loss{
+  color:red;
+}
+#win{
+  color:green;
+}
