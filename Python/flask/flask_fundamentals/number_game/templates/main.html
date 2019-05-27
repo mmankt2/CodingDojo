@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Counter</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css') }}">
+  </head>
+  <body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I'm thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    {% if session.status == "Too Low" or session.status == "Too High": %}
+    <div id="wrong">
+        <h3>{{session.status}}</h3>
+        <h4>Try again!</h4>
+    </div>
+    {% endif %}
+    {% if session.status == "Correct": %}
+    <div id="right">
+        <h3>{{session.answer}} was the number!</h3>
+        <form action="/destroy_session" method="GET">
+          <input type="submit" value="Play again!" id="submit">
+        </form>
+    </div>
+    {% endif %}
+    {% if session.status != "Correct": %}
+    <form action="/guess" method="POST">
+      <input type="text" name="guess">
+      <input type="submit" value="Submit" id="submit">
+      {% endif %}
+    </form>
+  </body>
+</html>
