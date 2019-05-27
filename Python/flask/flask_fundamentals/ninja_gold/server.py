@@ -24,14 +24,14 @@ def money():
     gain = random.randint(2,5)
     session['gold'] += gain
   if request.form['building'] != "casino":
-    session['message'] += "<p id='win'>Earned " + str(gain) + " golds from the " + request.form['building'] + "! (" + str(datetime.datetime.now()) + ")</p>"
+    session['message'] = "<p id='win'>Earned " + str(gain) + " golds from the " + request.form['building'] + "! (" + str(datetime.datetime.now()) + ")</p>" + session['message']
   if request.form['building'] == "casino":
     gain = random.randint(-50,50)
     session['gold'] += gain
     if gain < 0:
-      session['message'] += "<p id='loss'>Entered a casino and lost " + str(gain) + " golds... Ouch.. (" + str(datetime.datetime.now()) + ")</p>"
+      session['message'] = "<p id='loss'>Entered a casino and lost " + str(gain) + " golds... Ouch.. (" + str(datetime.datetime.now()) + ")</p>" + session['message']
     else:
-      session['message'] += "<p id='win'>Earned " + str(gain) + " golds from the casino! (" + str(datetime.datetime.now()) + ")</p>"
+      session['message'] = "<p id='win'>Earned " + str(gain) + " golds from the casino! (" + str(datetime.datetime.now()) + ")</p>" + session['message']
 
   return redirect("/")
 
