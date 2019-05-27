@@ -7,19 +7,17 @@ app.secret_key="secretest key"
 
 @app.route("/")
 def main():
-  if not "answer" in session:
+  if not "count" in session:
     print("just got here")
-    session["answer"]=random.randint(1,10)
-  print(session["answer"])
+    session["count"]=1
+  else:
+    session["count"] += 1
+  print(session["count"])
   return render_template("main.html")
 
-@app.route("/guess", methods=["POST"])
-def guessing():
-  guess=int(request.form["guess"])
-  if guess < session['answer']:
-    status = "too low"
-  if guess > session['answer']:
-    status = "too high"  
+@app.route("/destroy_session")
+def destroy():
+  session.clear()
   return redirect("/")
 
 if __name__ == "__main__":

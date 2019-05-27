@@ -1,18 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Counter</title>
-  </head>
-  <body>
-    <h1>Guess a number between 1 and 10...</h1>
-    <form action="/guess" method="POST">
-      <label for="guess">Guess:</label>
-      <input type="number" name="guess">
-      <input type="submit" value="Submit">
-    </form>
-    <h3>Last Guess: {{guess}}</h3>
-    {% if guess: %}
-    <h3>{{status}}</h3>
-    {% endif %}
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static', filename='main.css') }}" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <h1>Counter</h1>
+  <p>{{session.count}} times.</p>
+</body>
 </html>
