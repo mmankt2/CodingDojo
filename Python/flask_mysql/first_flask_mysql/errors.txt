@@ -1,0 +1,24 @@
+
+1
+werkzeug.exceptions.BadRequestKeyError
+
+werkzeug.exceptions.HTTPException.wrap.<locals>.newcls: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+--looks like I forgot to put in the "POST" methods in my server.py file.
+
+2
+Method Not Allowed
+
+The method is not allowed for the requested URL.
+--added the POST method, something still not right. should have used "method" instead of "methods" in the html.
+
+3
+Not Found
+
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+--i redirected to a route that isn't defined in my server.py file
+
+4
+NO error when the data dictionary has a mispelled variable for the query.
+
+5
+NO error when the query has a mispelled variable which is different than the data dictionary.

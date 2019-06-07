@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>C+R Pets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <table class="table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    {% for pet in pets: %}
+      <tr>
+        <td>{{pet['pet_id']}}</td>
+        <td>{{pet['name']}}</td>
+        <td>{{pet['type']}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <h1>Add a Pet</h1>
+  <form action="/insert_pet" method="POST">
+  <p>Name <input type="text" name="name" id=""></p>
+  <p>Type <input type="text" name="type" id=""></p>
+  <p><input type="submit" value="submit"></p>
+  </form>
+</body>
+</html>
