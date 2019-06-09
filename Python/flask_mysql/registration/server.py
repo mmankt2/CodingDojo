@@ -27,7 +27,7 @@ def register():
   pw = request.form['password']
   cpw = request.form['confirm_password']
   
-  m = re.compile(r'[A-Za-z0-9@#$%^&+=]')
+  m = re.compile(r'^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$])[\w\d@#$]{8,}$')
   if len(fn)<1:
     flash('First Name must be filled in.')
     is_valid = False
@@ -37,9 +37,9 @@ def register():
   if not m.match(pw):
     flash('Password must be at least 8 characters in length, contain 1 upper case, 1 lower case, and 1 special character.')
     is_valid = False
-  if len(pw)<8:
-    flash('Password must be at least 8 characters in length, contain 1 upper case, 1 lower case, and 1 special character.')
-    is_valid = False
+  #if len(pw)<8:
+   # flash('Password must be at least 8 characters in length, contain 1 upper case, 1 lower case, and 1 special character.')
+    #is_valid = False
   if pw != cpw:
     flash('Passwords do not match.')
     is_valid = False
