@@ -128,6 +128,9 @@ def dashboard():
 @app.route('/tweet/create', methods=["POST"])
 def tweet():
   mysql = connectToMySQL(db)
+  if 'id' not in session:
+    flash('You must login to create a tweet')
+    return redirect('/')
   is_valid = True
   if len(request.form['tweet'])<1:
     flash('tweet must contain some content')
@@ -159,6 +162,21 @@ def add_like(id):
   results = mysql.query_db(query)
   print(results)
   return redirect('/dashboard')
+
+@app.route('/tweets/<id>/delete', methods=["POST","GET"])
+def delete_tweet(id):
+  mysql = connectToMySQL(db)
+  query = "DELETE from tweets where id = %(id)s;"
+  q_data = {
+    'id':id
+  }
+  mysql.query_db(query,q_data)
+  mysql = connectToMySQL(db)
+  query = "SELECT * from tweets where id = "+q_data['id']+";"
+  results = mysql.query_db(query)
+  print(results)
+  return redirect('/dashboard')
+
 
 if __name__ == "__main__":
   app.run(debug=True)

@@ -41,6 +41,7 @@
         <h4>{{tweet.first_name}} {{tweet.last_name}} says:</h4>
         <p>{{tweet.content}}</p>
         <div>{{tweet.likes}} likes <br><a href="/add_like/{{tweet.id}}">Add Like!</a></div>
+        <div><a href="/tweets/{{tweet.id}}/delete">Delete</a></div>
       {% endfor %}
     </div>
   </div>  
