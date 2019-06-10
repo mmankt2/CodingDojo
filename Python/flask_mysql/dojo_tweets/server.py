@@ -178,5 +178,37 @@ def delete_tweet(id):
   return redirect('/dashboard')
 
 
+@app.route('/tweets/<id>/edit')
+def edit_tweet(id):
+  mysql = connectToMySQL(db)
+  query = "SELECT * from tweets where id = %(id)s;"
+  q_data = {
+    'id':id
+  }
+  results = mysql.query_db(query,q_data)
+  print(results)
+  return render_template('edit_tweet.html', tweet = results[0])
+
+@app.route('/tweets/<id>/update', methods=["POST"])
+def update_tweet(id):
+  mysql = connectToMySQL(db)
+  if 'id' not in session:
+    flash('You must login to create a tweet')
+    return redirect('/')
+  is_valid = True
+  if len(request.form['tweet'])<1:
+    flash('tweet must contain some content')
+    is_valid = False
+    return redirect('/dashboard')
+  query = "UPDATE tweets set content = %(new_content)s, updated_at = NOW() where id = %(id)s;"
+  q_data = {
+    'id':id,
+    'new_content':request.form['tweet']
+  }
+  results = mysql.query_db(query,q_data)
+  print(results)
+  return redirect('/dashboard')
+
+
 if __name__ == "__main__":
   app.run(debug=True)
