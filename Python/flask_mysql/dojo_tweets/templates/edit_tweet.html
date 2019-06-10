@@ -32,7 +32,6 @@
     <h1>Edit Tweet:</h1>
     <form action="/tweets/{{tweet.id}}/update" method="POST">
       <textarea name="tweet" id="user_tweet" cols="30" rows="10">{{tweet.content}}</textarea>
-      {{tweet.id}}
       <input type="submit" value="Update">
     </form>
     <a href="/dashboard"><button>Cancel</button></a>
