@@ -28,7 +28,7 @@ def register():
   ln = request.form['last_name']
   pw = request.form['password']
   cpw = request.form['confirm_password']
-  email = request.form['email']
+  email = request.form['email'].lower()
 
   if len(fn)<1:
     flash('First Name must be filled in.')
@@ -68,6 +68,14 @@ def register():
       'pw':pw_hash
     }
     id = mysql.query_db(query,q_data)
+    #make a new user automaically follow themself
+    mysql=connectToMySQL(db)
+    query = "INSERT INTO followers (follower_id, followed_id, created_at, updated_at) values (%(id)s,%(id)s,NOW(),NOW());"
+    q_data = {
+      'id':id
+    }
+    fid = mysql.query_db(query,q_data)
+  
   return redirect('/')
 
 @app.route('/login',methods=["POST"])
@@ -75,7 +83,7 @@ def login():
   mysql = connectToMySQL(db)
   is_valid=True
   #get form info
-  email = request.form['email']
+  email = request.form['email'].lower()
 
   if len(request.form['password'])<1:
     flash('Password cannot be blank.')
@@ -121,8 +129,12 @@ def logout():
 @app.route('/dashboard')
 def dashboard():
   mysql = connectToMySQL(db)
-  query = "SELECT u.first_name, u.last_name, t.content, t.created_at, t.likes, t.id from tweets t join users u on t.user_id = u.id order by t.id desc;"
-  results = mysql.query_db(query)
+  query = "SELECT u1.first_name, u1.last_name, t.content, t.created_at, t.likes, t.id from tweets t join followers f on t.user_id = f.followed_id join users u on f.follower_id = u.id join users u1 on f.followed_id = u1.id where u.id = %(id)s order by t.id desc;"
+  q_data = {
+    'id':session['id']
+  }
+  results = mysql.query_db(query,q_data)
+  print(results)  
   return render_template('dashboard.html',tweets=results)
 
 @app.route('/tweet/create', methods=["POST"])
@@ -143,10 +155,12 @@ def tweet():
   }
   mysql.query_db(query,q_data)
   mysql = connectToMySQL(db)
-  query = "SELECT u.first_name, u.last_name, t.content, t.created_at, t.likes, t.id from tweets t join users u on t.user_id = u.id order by t.id desc;"
-  results = mysql.query_db(query)
-  print(results)
-  
+  query = "SELECT u1.first_name, u1.last_name, t.content, t.created_at, t.likes, t.id from tweets t join followers f on t.user_id = f.followed_id join users u on f.follower_id = u.id join users u1 on f.followed_id = u1.id where u.id = %(id)s order by t.id desc;"
+  q_data = {
+    'id':session['id']
+  }
+  results = mysql.query_db(query,q_data)
+  print(results)  
   return render_template('/dashboard.html', tweets = results)
 
 @app.route('/add_like/<id>', methods=["POST","GET"])
@@ -209,6 +223,39 @@ def update_tweet(id):
   print(results)
   return redirect('/dashboard')
 
+@app.route('/users')
+def show_users():
+  mysql = connectToMySQL(db)
+  query = "SELECT u1.first_name, u1.last_name, u1.email, u1.id, f1.follower_id from users u1 left join followers f1 on f1.followed_id = u1.id and f1.follower_id = %(id)s where u1.id <> %(id)s;"
+  q_data = {
+    'id':session['id']
+  }
+  users = mysql.query_db(query,q_data)
+  print(users)
+  return render_template('/show_users.html', users = users)
+
+@app.route('/follow/<uid>')
+def follow(uid):
+  mysql = connectToMySQL(db)
+  query = "INSERT INTO followers (follower_id, followed_id, created_at, updated_at) values (%(id)s, %(uid)s, NOW(), NOW());"
+  q_data = {
+    'id':session['id'],
+    'uid':uid
+  }
+  fid = mysql.query_db(query,q_data)
+  print(fid)
+  return redirect('/users')
+
+@app.route('/unfollow/<uid>')
+def unfollow(uid):
+  mysql = connectToMySQL(db)
+  query = "DELETE FROM followers where follower_id = %(id)s and followed_id = %(uid)s;"
+  q_data = {
+    'id':session['id'],
+    'uid':uid
+  }
+  mysql.query_db(query,q_data)
+  return redirect('/users')
 
 if __name__ == "__main__":
   app.run(debug=True)
