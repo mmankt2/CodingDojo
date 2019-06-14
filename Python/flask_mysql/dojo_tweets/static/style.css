@@ -41,7 +41,6 @@ div#dashboard{
   margin:8px;
   display:inline-block;
   width:45%;
-  outline:1px solid black;
 }
 div.tweets{
   vertical-align:top;
