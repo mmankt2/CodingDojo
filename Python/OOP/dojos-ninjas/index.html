@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <ul>
+  {% for dojo in all_dojos%}
+    <li>{{dojo.name}}</li>
+    <ul>
+    {% for ninja in dojo.ninjas %}
+      <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+    {% enfor %}
+    </ul>
+  {% endfor%}
+  </ul>
+  <form action="/add_dojo" method="POST">
+    <p>Name: <input type="text" name="dojo_name"></p>
+    <p>Name: <input type="text" name="dojo_city"></p>
+    <p>Name: <input type="text" name="dojo_state"></p>
+    <input type="submit" value="Save Dojo" name="" id="">
+  
+  </form>
+  <form action="/add_ninja" method="POST">
+    <p>First Name: <input type="text" name="first_name"></p>
+    <p>Last Name: <input type="text" name="last_name"></p>
+    <p>Home Dojo: <select name="dojo" id="">
+        {% for dojo in all_dojos %}
+          <option value="{{dojo.id}}">{{dojo.name}}</option>
+        {% endfor %}
+    </select> </p>>
+    <input type="submit" value="Save Dojo" name="" id="">
+  
+  </form>
+</body>
+</html>
