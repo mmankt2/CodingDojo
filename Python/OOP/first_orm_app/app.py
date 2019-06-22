@@ -22,6 +22,13 @@ class User(db.Model):
   created_at = db.Column(db.DateTime, server_default=func.now())
   updated_at = db.Column(db.DateTime, server_default=func.now())
 
+class Tweets(db.Model):
+  __tablename__ = "tweets"
+  id = db.Column(db.Integer, primary_key = True)
+  content = db.Column(db.Text)
+  author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+  author = db.relationship('users', foreign_keys=[author_id], backref="user_tweets", cascade="all")
+
 @app.route("/")
 def index():
   #to display all users as a list
@@ -65,6 +72,38 @@ def show_users():
   db.session.commit()
 
   return redirect("/")
+
+#this route is just my notes from ORM Queries with Relationships
+@app.route('/create_tweet')
+def tweet():
+  #author_id is the foreign key
+  new_tweet = Tweet(content="my first tweet!", authod_id=1)
+
+  #get one user
+  single_user = User.query.get(1)
+  #get a list of the users tweets
+  list_of_user_tweets = single_user.user_tweets
+  #to get a single tweet
+  single_tweet = Tweet.query.get(1)
+  #get the author of the tweet
+  tweet_author = single_tweet.author
+  #get the first name
+  tweet_author_first_name = single_tweet.author.first_name
+  tweet_author_last_name = single_tweet.author.last_name
+
+  #to reassign the author of a tweet
+  a_tweet = Tweet.query.get(1)
+  a_tweet.author_id = 3
+  db.session.commit()
+
+  #to delete
+  tweet_to_delete = Tweet.query.get(1)
+  db.session.delete(tweet_to_delete)
+  db.session.commit()
+  user_to_delete = User.query.get(1)
+  db.session.delete(user_to_delete)
+  db.session.commit()
+
 
 
 if __name__ == "__main__":

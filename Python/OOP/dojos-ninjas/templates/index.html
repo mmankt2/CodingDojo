@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dojos and Ninjas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <!--Flash messages here-->
+  {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h1>Add a Dojo</h1>
+  <form action="/add_dojo" method="POST">
+    <p>Name: <input type="text" name="dojo_name"></p>
+    <p>City: <input type="text" name="dojo_city"></p>
+    <p>State: <input type="text" name="dojo_state"></p>
+    <input type="submit" value="Save Dojo">
+  </form>
+
+  <h1>Add a Ninja</h1>
+  <form action="/add_ninja" method="POST">
+    <p>First Name: <input type="text" name="first_name"></p>
+    <p>Last Name: <input type="text" name="last_name"></p>
+    <p>Home Dojo: <select name="dojo" id="">
+        {% for dojo in all_dojos %}
+          <option value="{{dojo.id}}">{{dojo.name}}</option>
+        {% endfor %}
+    </select> </p>
+    <input type="submit" value="Save Dojo">
+  </form>
+  <h1>All the Dojos</h1>
+  <ul>
+      {% for dojo in all_dojos%}
+        <li>{{dojo.name}}</li>
+        <ul>
+        {% for ninja in dojo.ninjas %}
+          <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+        {% endfor %}
+        </ul>
+      {% endfor%}
+    </ul>
+</body>
+</html>
