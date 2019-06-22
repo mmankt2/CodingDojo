@@ -1,7 +1,10 @@
 #Directories#
 WebFun/Exam
+Python/Exam
+Python/Exam/templates
+Python/Exam/static
 
 #files#
 WebFun/Exam/index.html
 WebFun/Exam/style.html
-Python/my_environment/env
+Python/my_environments/env/
