@@ -21,13 +21,20 @@ class User(db.Model):
   age = db.Column(db.Integer)
   created_at = db.Column(db.DateTime, server_default=func.now())
   updated_at = db.Column(db.DateTime, server_default=func.now())
+  tweets_this_user_likes = db.relationship('Tweet',secondary=likes_table)
 
 class Tweets(db.Model):
   __tablename__ = "tweets"
   id = db.Column(db.Integer, primary_key = True)
   content = db.Column(db.Text)
-  author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+  author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   author = db.relationship('users', foreign_keys=[author_id], backref="user_tweets", cascade="all")
+  users_who_like_this_tweet = db.relationship('User', secondar=likes_table)
+
+#to create a many to many relationship between tweets and users
+likes_table = db.Table('likes',
+              db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+              db.Column('tweet_id', db.Integer, db.ForeignKey('tweets.id'),primary_key=True))
 
 @app.route("/")
 def index():
@@ -103,6 +110,37 @@ def tweet():
   user_to_delete = User.query.get(1)
   db.session.delete(user_to_delete)
   db.session.commit()
+
+  #to create a relationship between a user and a tweet with a like
+  existing_tweet = Tweet.query.get(1)
+  existing_user = User.query.get(1)
+  existing_user.tweets_this_user_likes.append(existing_tweet)
+  db.session.commit()
+  #or
+  existing_tweet = Tweet.query.get(1)
+  existing_user = User.query.get(1)
+  existing_tweet.users_who_like_this_tweet.append(existing_user)
+  db.session.commit()
+
+  #to access the tweets liked by a single user
+  single_user = User.query.get(1)
+  single_user.tweets_this_user_likes
+
+  #to see all the users who like a tweet
+  single_tweet = Tweet.query.get(1)
+  single_tweet.users_who_like_this_tweet
+
+  #to delete a like
+  existing_tweet = Tweet.query.get(1)
+  existing_user = User.query.get(1)
+  existing_user.tweets_this_user_likes.remove(existing_tweet)
+  db.session.commit()
+  #or
+  existing_tweet = Tweet.query.get(1)
+  existing_user = User.query.get(1)
+  existing_tweet.users_who_like_this_tweet.remove(existing_user)
+  db.session.commit()
+  
 
 
 

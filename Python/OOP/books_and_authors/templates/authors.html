@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Books & Authors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="main.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>{{author.first_name}} {{author.last_name}}</h1>
+  <p>ID: {{author.id}}</p>
+  <p>Notes: {{author.notes}}</p>
+  <p>Books:</p>
+  <ul>
+    {% for book in books %}
+    <li>{{book.title}}</li>
+    {% endfor %}
+  </ul>
+  <form action="/add_books_to_author" method="POST">
+
+    <select name="book_to_add">
+      {% for book in all_books %}
+      <option value="{{book.id}}">{{book.title}}</option>
+      {% endfor %}
+    </select>
+    <input name="author_id" value="{{author.id}}" class="hidden">
+    <input type="submit" value="Add">
+  </form>
+</div>
+</body>
+</html>
