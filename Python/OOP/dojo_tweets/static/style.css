@@ -1,0 +1,75 @@
+*{
+  padding:0px;
+  margin:0px;
+}
+div#header{
+  border-bottom:2px solid black;
+}
+#header h4:nth-child(2){
+  margin-left:20%;
+}
+#header *{
+  display:inline-block;
+  vertical-align: top;
+  margin-top:10px;
+  margin-left:8px;
+}
+#header a{
+  display:inline-block;
+  margin-left:40px;
+  margin-right:40px;
+}
+form{
+  margin: 1%;
+  display: inline-block;
+  width:46%;
+  vertical-align:top;
+}
+#messages{
+  margin:8px;
+  font-size: 13px;
+  color:red;
+}
+#messages p{
+  height:16px;
+  margin:0px;
+}
+div#dashboard{
+  margin-left:1%;
+}
+.tweets{
+  margin:8px;
+  display:inline-block;
+  width:45%;
+}
+div.tweets{
+  vertical-align:top;
+}
+.tweets h1{
+  margin:8px;
+}
+.previous_tweets{
+  margin:8px;
+}
+.previous_tweets p{
+  min-height:50px;
+  width:299px;
+  margin-top:30px;
+  outline:1px solid black;
+}
+.previous_tweets h4{
+  margin-top:16px;
+  border-top:1px solid black;
+}
+.tweet_options a{
+  display:inline-block;
+  width:25%;
+  vertical-align:top;
+  margin:2px;
+}
+.tweet_options form{
+  display:inline-block;
+  width:25%;
+  vertical-align:top;
+  margin:2px;
+}
