@@ -1,6 +1,7 @@
 #! /home/melissa/my_environments/py3SQLAlchemyEnv/bin/python
 from flask import render_template,request,redirect			# same as beforecopy
-from config import app, db, bcrypt, migrate, Dojos, Ninjas
+from config import app, db, bcrypt, migrate
+from models import Dojos, Ninjas 
 
 @app.route('/')
 def landing():
