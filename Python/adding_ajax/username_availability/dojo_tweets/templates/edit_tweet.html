@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Edit Tweet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="header">
+    <h4>Dojo Tweets</h4>
+    <h4>Welcome, {{session.first_name}}</h4>
+    <a href="/logout">Logout</a>
+  </div>
+  <div id="messages">
+    {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+      {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+          <p>{{message}}</p>
+        <!-- display each message in a paragraph tag -->
+        {% endfor %} 
+      {% endif %}
+    {% endwith %}
+  </div>
+  <div class="tweets">
+    <h1>Edit Tweet:</h1>
+    <form action="/tweets/{{tweet.id}}/update" method="POST">
+      <textarea name="tweet" id="user_tweet" cols="30" rows="10">{{tweet.content}}</textarea>
+      <input type="submit" value="Update">
+    </form>
+    <a href="/dashboard"><button>Cancel</button></a>
+  </div>
+</body>
+</html>
