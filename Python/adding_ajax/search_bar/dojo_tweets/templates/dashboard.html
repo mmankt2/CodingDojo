@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="header">
+    <h4>Dojo Tweets</h4>
+    <a href="/users">Users</a>
+    <h4>Welcome, {{session.first_name}}</h4>
+    <a href="/logout">Logout</a>
+  </div>
+  <div id="messages">
+    {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+      {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+          <p>{{message}}</p>
+        <!-- display each message in a paragraph tag -->
+        {% endfor %} 
+      {% endif %}
+    {% endwith %}
+  </div>
+  <div class="tweets">
+    <h1>Write a Tweet:</h1>
+    <form action="/tweet/create" method="POST">
+      <textarea name="tweet" id="user_tweet" cols="30" rows="10"></textarea>
+      <input type="submit" value="Submit"> 
+    </form>
+  </div>
+  <div class="tweets">
+    <div class="previous_tweets">
+      {% for tweet in tweets: %}
+        <h4>{{tweet.author.first_name}} {{tweet.author.last_name}} says:</h4>
+        <p>{{tweet.content}}</p>
+        <div class="tweet_options">
+            <form action="/add_like/{{tweet.id}}" method="POST">
+              <input type="submit" value="Add Like!" id="likes">
+              <label for"likes">{{tweet.likes}} likes</label>
+            </form>
+            {% if tweet.author_id == session.id %}
+            <form action="/tweets/{{tweet.id}}/delete" method="POST">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/tweets/{{tweet.id}}/edit">Edit</a>
+            {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>  
+</body>
+<script>
+
+  $(document).ready(function(){
+    
+    function get_tweets() {
+
+      $('myform').submit(function () {
+        $.ajax({
+          url: '/get_tweets_mysync/{{session["user_id"]}}',
+          method: 'GET',
+          data: $('#myform').serialize()
+        })
+          .done(function (response) {
+            $('#tweets').html(response)
+          })
+        return false;
+      });
+    }
+    setInterval(function(){
+
+
+    })
+
+
+  })
+</script>
+</html>

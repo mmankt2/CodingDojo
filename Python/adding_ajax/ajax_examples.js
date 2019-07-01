@@ -70,3 +70,30 @@ def username():
 {% if found == False %}
 <p class="success"> This username is available</p>
 {% endif %}
+
+
+//when using a GET method, localhost:5000/users?name=kermit&color=green
+@app.route('/users')
+def data_from_query_string():
+    print(request.args.get('name'))     # outputs kermit
+    print(request.args.get('color'))    # outputs green
+    # any other logic goes here
+
+//general ajax call
+$('#form1').submit(function(){
+  $.ajax({ 
+    method: "POST",     // using a GET request would put your form data in the url as query strings
+    url: $(this).attr('action'), // 'this' refers to #form1, the element that triggered the function
+    data: $(this).serialize()
+  })
+  .done(function(response) {
+    // your code on what to do once the http response is received
+  })
+  .fail(function(response) {
+    // optional code on what to do if the http request fails
+  })
+  .always(function(data){
+    // optional code on what should be done regardless of whether the http request is successful or not
+  })
+  return false; // return false so the form is not submitted normally
+});
