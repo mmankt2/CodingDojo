@@ -273,5 +273,25 @@ def search():
     flash("no user with than name")
   return False
 
+@app.route("/create_tweets", methods=["POST"])
+def show_tweets():
+  if 'id' not in session:
+    flash('You must login to create a tweet')
+    return redirect('/')
+  is_valid = True
+  if len(request.form['tweet'])<1:
+    flash('tweet must contain some content')
+    is_valid = False
+    return False
+  new_tweet = Tweet(
+    content=request.form['tweet'],
+    author_id=session['id']
+  )
+  print(new_tweet)
+
+  db.session.add(new_tweet)
+  db.session.commit()
+  return render_template('partials/tweets.html', tweet = new_tweet)
+
 if __name__ == "__main__":
   app.run(debug=True)

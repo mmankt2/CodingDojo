@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="static/add_ajax_tweets.js"></script>
 </head>
 <body>
   <div id="header">
@@ -31,13 +32,13 @@
   </div>
   <div class="tweets">
     <h1>Write a Tweet:</h1>
-    <form action="/tweet/create" method="POST">
-      <textarea name="tweet" id="user_tweet" cols="30" rows="10"></textarea>
-      <input type="submit" value="Submit"> 
+    <form id="tweetForm" action="/create_tweets" method="POST">
+      <textarea name="tweet" id="user_tweet" cols="30" rows="3"></textarea>
+      <input type="Submit" value="Submit">
     </form>
   </div>
   <div class="tweets">
-    <div class="previous_tweets">
+    <div class="previous_tweets" id="tweetsDiv">
       {% for tweet in tweets: %}
         <h4>{{tweet.author.first_name}} {{tweet.author.last_name}} says:</h4>
         <p>{{tweet.content}}</p>
@@ -57,30 +58,4 @@
     </div>
   </div>  
 </body>
-<script>
-
-  $(document).ready(function(){
-    
-    function get_tweets() {
-
-      $('myform').submit(function () {
-        $.ajax({
-          url: '/get_tweets_mysync/{{session["user_id"]}}',
-          method: 'GET',
-          data: $('#myform').serialize()
-        })
-          .done(function (response) {
-            $('#tweets').html(response)
-          })
-        return false;
-      });
-    }
-    setInterval(function(){
-
-
-    })
-
-
-  })
-</script>
 </html>
