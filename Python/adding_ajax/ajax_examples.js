@@ -97,3 +97,48 @@ $('#form1').submit(function(){
   })
   return false; // return false so the form is not submitted normally
 });
+
+//serializing in pythong to create JSON data
+import json
+# python types must be converted to json using the json module
+my_list = [
+    {
+        "first_name": "Wes",
+        "last_name": "Harper",
+        "email": "wharper@codingdojo.com",
+    }
+]
+my_jsonified_list = json.dumps(my_list)<br>
+
+//add this to config.py
+from flask_marshmallow import Marshmallow
+# this was already here
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+# this is new
+ma = Marshmallow(app)<br>
+
+//do this in models file
+from config import db, ma
+class SomeModel(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    # the rest omitted for brevity
+class SomeModelSchema(ma.ModelSchema):
+    class Meta:
+        model = SomeModel
+
+//do this in the controller file
+# conveniently, Flask has a jsonify function
+from flask import render_template, request, redirect, session, url_for, flash, jsonify
+from server.models.some_model import SomeModel, SomeModelSchema
+def one():
+    one_item = SomeModel.query.first()
+    some_schema = SomeModelSchema()
+    output = some_schema.dump(one_item).data
+    return jsonify({"some_item": output})
+def all():
+    items = SomeModel.query.all()
+    some_schema = SomeModelSchema(many=True) # this is different!
+    output = some_schema.dump(items).data
+    return jsonify({"some_item": output})
