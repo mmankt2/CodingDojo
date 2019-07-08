@@ -28,3 +28,14 @@ switch (favoriteLanguageString) {
   default: console.log("Why don't you choose a different one.");
   }
   
+//integer to roman numerals
+
+var myAssocArr = { fName: "Kaitemma", "lName": "Claiben"};
+// notice that keys can be strings (quoted) or symbols (without quotes)
+myAssocArr["fun"] = "shreds on electric cello";
+console.log(myAssocArr); 
+// { fName: "Kaitlemma", lName: "Claiben",
+// fun: "shreds on her electric cello" }
+myAssocArr.IQ = 144;
+console.log(myAssoc["IQ"]); // 144
+console.log(myAssoc.fun); // "shreds on her electric cello"
