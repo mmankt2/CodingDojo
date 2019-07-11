@@ -1,10 +1,5 @@
-function ListNode(value){
-  this.val = value;
-  this.next = null;
-}
-
 class Node {
-  consttructor(value){
+  constructor(value){
     this.value = value;
     this.next = null;
   }
@@ -15,32 +10,16 @@ class List {
     this.head = null;
   }
   
-  display(){
-    console.log('beginning to print list');
-    
-    let current = this.head;
-    
-    while(current){
-      console.log(current.value);
-      current = current.next;
-    }
-    console.log('finished printing list');
-  }
-  
+  //add front
   add(value){
     const node = new Node(value);
     
     node.next = this.head;
     this.head = node;
-    //if (this.head !== null){
-    //  this.head.next = node;
-    //}
-    //else {
-    //  this.head = node;
-    //}
     return this;
   }
   
+  //remove front
   remove(){
     const current = this.head;
     if(current){
@@ -50,10 +29,17 @@ class List {
     else {
       console.log('not a node object');
     }
-    
+    //use a ternary operator for the return statement
     return current ? current.value:null;
   }
-  
+
+  //front
+  front(){
+    const current = this.head;
+    return current ? current.value: null;
+  }
+
+  //contains
   contains(testValue){
     let current = this.head;
     
@@ -64,6 +50,19 @@ class List {
       current = current.next;
     }
     return false;
+  }
+
+  //display
+  display(){
+    console.log('beginning to print list');
+    
+    let current = this.head;
+    
+    while(current){
+      console.log(current.value);
+      current = current.next;
+    }
+    console.log('finished printing list');
   }
     
 }
@@ -82,16 +81,15 @@ const list = new List();
 list.add(5);
 list.add(9);
 
-console.log(node1);
-console.log(list);
+console.log(list.front());
 
-//programattically create nodes from an array
+//use a loop to create nodes from an array
 for (let index = 0; index < array.length; index++){
   const value = array[index];
   console.log('adding value '+value);
   list.add(value);
 }
-
+console.log(list);
 list.display();
 console.log('contains 7? ' + list.contains(7));
 console.log(list.remove());
