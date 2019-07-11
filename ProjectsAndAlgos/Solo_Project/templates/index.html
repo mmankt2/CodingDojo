@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../static/main.js"></script>
 </head>
 <body>
   <div id='header'>
     <a href="/">Home</a>    
   </div>
   <div id="messages">
+    <p class='fn hidden'>Please enter a first name.</p>
+    <p class='ln hidden'>Please enter a last name.</p>
+    <p class='email hidden'>Please enter a valid email address.</p>
+    <p class='password hidden'>Password must have at least 8 characters, one uppercase, one lowercase, and one number.</p>
+    <p class='cpassword hidden'>Passwords don't match.</p>
     {% with messages = get_flashed_messages() %}
       <!-- declare a variable called messages -->
       {% if messages %}
@@ -26,7 +32,7 @@
       {% endif %}
     {% endwith %}
   </div>
-  <form action="/register" method="POST">
+  <form action="/register" method="POST" id='registration-form'>
     <h1>Registration</h1>
     <p> <label for="fn">First Name</label>
       <input type="text" name="first_name" id="fn" class="form-control">

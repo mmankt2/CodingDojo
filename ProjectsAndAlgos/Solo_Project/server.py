@@ -10,25 +10,24 @@ bcrypt = Bcrypt(app)
 db='fit_ideas'
 
 #users table: primary key, first, last, email, password, created at, updated at - DONE
-#exercise table: primary key, exercise name, exercise description, exercise picture or gif, created at, updated at - DONE
-#routine table: primary key, short description, date of last use, playlist link on spotify, created at, updated at - DONE
+#exercise table: primary key, exercise name, exercise description, exercise picture or gif, 
+# created at, updated at - DONE
+#routine table: primary key, short description, date of last use, playlist link on spotify, 
+# created at, updated at - DONE
 #exercises-routines table: primary key, exercise key, routine key - DONE
 #exercise category 1 (standing, floor, abs)
-#exercise cat 1-exercises: primary key, exercise key, exercise cat 1 key - DONE
+#exercise cat 1-exercises: primary key, exercise key, exercise cat 1 key
 #movement categories (push, pull, hinge, trunk rotation, single leg), - DONE
 #movement categories-exercises: primary key, exercise key, exercise cat 2 key - DONE
-#muscle group (hamstring, glutes, quads, calves, back, anterior delt, posterior delt, medial delt, pecs/chest, biceps, triceps)
+#muscle group (hamstring, glutes, quads, calves, back, anterior delt, posterior delt, medial delt, 
+# pecs/chest, biceps, triceps)
 #muscle group-exercises: primary key, exercise key, muscle group key
 
 #allow more special characters in the regex
-pw_regex = re.compile(r'^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$])[\w\d@#$]{8,}$')
+pw_regex = re.compile(r'^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])[\w\d]{8,}$')
 email_regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 @app.route('/')
 def index():
-  #mysql = connectToMySQL(db)
-  #query = "SELECT * from users;"
-  #results = mysql.query_db(query)
-  #print(results)
   return render_template('index.html')
 
 @app.route('/register',methods=["POST"])
