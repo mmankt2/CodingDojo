@@ -1,3 +1,4 @@
+'use strict';
 class Node {
   constructor(value){
     this.value = value;
@@ -83,6 +84,40 @@ class List {
     return count;
   }
 
+  max_w_traverse(){
+    let max = this.head ? this.head.value:null;
+    let node = this.head;
+    this.traverse(function(node){
+      if(node.value > max){
+        max = node.value;
+      }
+    });
+    return max;
+  }
+  min_w_traverse(){
+    let min = this.head ? this.max_w_traverse.value:null;
+
+    this.traverse(function(node){
+      if(node.value < min){
+        min = node.value;
+      }
+    })
+    return min;
+  }
+
+  average_w_traverse(){
+    const length = this.length();
+    let sum = 0;
+
+    //uses an anonymous function to simplify the code. 
+    //don't need parenthesis if it just accepts 1 parameter
+    this.traverse((node) => sum += node.value);
+    // this.traverse(function(node){
+    //   sum += node.value;
+    // })
+    return sum/length;
+  }
+
     
 }
 
@@ -114,3 +149,9 @@ console.log('contains 7? ' + list.contains(7));
 console.log(list.remove());
 list.display();
 console.log('contains 7? '  + list.contains(7));
+
+
+console.log('the max with travers is '+list.max_w_traverse());
+console.log('the min with travers is '+list.min_w_traverse());
+console.log('the average with travers is '+list.average_w_traverse());
+console.log('the length with travers is '+list.length_w_traverse());
