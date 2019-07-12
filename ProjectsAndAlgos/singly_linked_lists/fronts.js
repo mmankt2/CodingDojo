@@ -64,6 +64,25 @@ class List {
     }
     console.log('finished printing list');
   }
+  
+  //a function that has a common format used to traverse SLs
+  traverse(callback){
+    let current = this.head;
+
+    while(current){
+      callback();
+      current = current.next;
+    }
+  }
+  
+  //length
+  length_w_traverse(){
+    let count = 0;
+    this.traverse(()=> count++);
+
+    return count;
+  }
+
     
 }
 
