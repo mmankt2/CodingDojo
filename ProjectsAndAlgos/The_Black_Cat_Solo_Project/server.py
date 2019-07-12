@@ -30,6 +30,10 @@ email_regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 def index():
   return render_template('index.html')
 
+@app.route('/registeruser')
+def registration_page():
+  return render_template('registration.html')
+
 @app.route('/register',methods=["POST"])
 def register():
   mysql = connectToMySQL(db)
@@ -47,27 +51,16 @@ def register():
   if len(ln)<1:
     flash('Last Name must be filled in.')
     is_valid = False
-  #if not pw_regex.match(pw):
-  #  flash('Password must be at least 8 characters in length, contain 1 upper case, 1 lower case, and 1 special character.')
-  #  is_valid = False
-  if not email_regex.match(email):
-    flash('Please enter a valid email address.')
-    is_valid = False
-  #if pw != cpw:
-  #  flash('Passwords do not match.')
-  #  is_valid = False
   if is_valid == True:
     query = "SELECT * from users where email = lower(%(email)s);"
     q_data = {
       'email':email
     }
     user_info = mysql.query_db(query,q_data)
-    #print(user_info)
     if user_info:
       flash('Email already registered. Please login.')
-      return redirect('/')
+      return redirect('/registeruser')
     pw_hash = bcrypt.generate_password_hash(pw)
-    #print(pw_hash)
     flash('Successfully added new user!')
     
     mysql=connectToMySQL(db)
@@ -87,7 +80,7 @@ def register():
     }
     fid = mysql.query_db(query,q_data)
   
-  return redirect('/')
+  return redirect('/registeruser')
 
 @app.route('/login',methods=["POST"])
 def login():
@@ -116,14 +109,14 @@ def login():
       print(user_info[0])
       if bcrypt.check_password_hash(user_info[0]['password'],request.form['password']) == True:
         print('password matched')
-        #flash('Password or email is incorrect.')
-        #return redirect('/')
-      #else:
         session['user_email'] = email
         session['first_name'] = user_info[0]['first_name']
         session['id'] = user_info[0]['id']
         return redirect('/success')
-    return redirect('/')
+      else:
+        flash('Password or email is incorrect.')
+        return redirect('/')
+    return redirect('/success')
 
 @app.route('/success')
 def success():

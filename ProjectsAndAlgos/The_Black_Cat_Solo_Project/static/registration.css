@@ -8,7 +8,12 @@ div#header{
 #header div{
   display:block;
   margin:8px;
-  text-alight:right;
+}
+form{
+  width:48%;
+  display:inline-block;
+  vertical-align:top;
+  margin-left:1%;
 }
 #messages{
   margin:8px;

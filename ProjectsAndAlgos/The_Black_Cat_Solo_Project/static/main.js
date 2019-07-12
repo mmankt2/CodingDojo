@@ -1,6 +1,14 @@
 $(document).ready(function() {
 console.log('working in jquery');
 
+setTimeout(function() {
+  $('.flash-messages').hide();
+}, 1000); 
+
+$('#show-login').click(function(){
+  $('#login-form').show();
+})
+
 $('#fn').keyup(delay(function(e){
   console.log('on keyup function');
   console.log('time elapsed!',this.value);
@@ -23,7 +31,7 @@ $('#ln').keyup(delay(function(e){
   }
 }, 500));
 
-$('#email').keyup(delay(function(e){
+$('#email,#login-email').keyup(delay(function(e){
   console.log('on keyup function');
   console.log('time elapsed!',this.value);
   if( !isValidEmailAddress( this.value ) ) { 
@@ -36,7 +44,7 @@ $('#email').keyup(delay(function(e){
 
 $('#password').keyup(delay(function(e){
   //console.log('on keyup function');
-  password1 = this.value;
+  var password1 = this.value;
   if( !isValidPW( this.value ) ) { 
     $('.password').show();
     $('#btnSubmit').attr("disabled",true);
@@ -46,23 +54,22 @@ $('#password').keyup(delay(function(e){
   else{
     $('.password').hide();
     $('#btnSubmit').attr("disabled",false);
-  }
-  validatePasswords(password1);
+    $('#confirm_password').keyup(delay(function(e){
+      var password2 = this.value;
+      if(!validatePasswords(password1,password2)){
+        $('.cpassword').show();
+        $('#btnSubmit').attr("disabled",true);
+    //    disableSubmit();
+      }
+      else{
+        $('.cpassword').hide();
+        $('#btnSubmit').attr("disabled",false);
+      }
+    }, 500));
 
+  }
 }, 500));
 
-$('#confirm_password').keyup(delay(function(e){
-  password2 = this.value;
-  if(!validatePasswords(password1,password2)){
-    $('.cpassword').show();
-    $('#btnSubmit').attr("disabled",true);
-//    disableSubmit();
-  }
-  else{
-    $('.cpassword').hide();
-    $('#btnSubmit').attr("disabled",false);
-  }
-}, 500));
 
 function isValidEmailAddress(emailAddress) {
   var pattern = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/i;
@@ -91,14 +98,6 @@ function validatePasswords(pw1,pw2){
   return (pw1==pw2); 
 }
 
-// function disableSubmit(){
-//   $("#registration-form").submit(function(e){
-//     e.preventDefault();
-//     $('#btnSubmit').attr("disabled",true);
-//   })
-// }
-
-
 function delay(callback, ms) {
   var timer = 0;
   return function() {
@@ -110,4 +109,4 @@ function delay(callback, ms) {
   };
 }
 
-}) //document.ready
+})//document.ready
