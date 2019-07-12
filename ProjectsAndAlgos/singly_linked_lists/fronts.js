@@ -66,6 +66,52 @@ class List {
     console.log('finished printing list');
   }
   
+
+  //min
+  min(){
+    let current = this.head;
+    //use ternary operator so if list is empty return null
+    let min = current ? current.value:null;
+
+    while(current){
+      if(current.value < min){
+        min = current.value;
+      }
+      current = current.next;
+    }
+    return min;
+  }
+
+  //max
+  max(){
+    let current = this.head;
+    //use ternary operator so if list is empty return null
+    let max = current ? current.value:null;
+
+    while(current){
+      if(current.value > max){
+        max = current.value;
+      }
+      current = current.next;
+    }
+    return max;
+  }
+  //average
+  average(){
+    let current = this.head;
+    let length = 0;
+    let sum = 0;
+
+    while(current){
+      sum += current.value;
+      length++;
+      current = current.next;
+    }
+
+    return sum/length;
+  } 
+
+
   //a function that has a common format used to traverse SLs
   traverse(callback){
     let current = this.head;
@@ -83,6 +129,44 @@ class List {
 
     return count;
   }
+
+  //back
+  back(){
+    let current = this.head;
+    let back = this.value;
+
+    while(current){
+      back = current.value;
+      current = current.next;  
+    }
+
+    return back;
+  }
+
+  //remove back
+  remove_back(){
+    let current = this.head;
+
+    while(current){
+      if (current.next.next == null){
+        current.next = null;
+      }
+      current = current.next;  
+    }
+  }
+  
+    //add back
+  add_back(back_value){
+    let current = this.head;
+    while(current){
+      if(current.next == null){
+        break;
+      }
+      current = current.next;
+    }
+    current.next = new Node(back_value);
+  }
+
 
   max_w_traverse(){
     let max = this.head ? this.head.value:null;
@@ -151,7 +235,19 @@ list.display();
 console.log('contains 7? '  + list.contains(7));
 
 
-console.log('the max with travers is '+list.max_w_traverse());
-console.log('the min with travers is '+list.min_w_traverse());
-console.log('the average with travers is '+list.average_w_traverse());
-console.log('the length with travers is '+list.length_w_traverse());
+
+console.log('the max value is '+list.max());
+console.log('the min value is '+list.min());
+console.log('the average is '+list.average());
+
+//console.log('the max with travers is '+list.max_w_traverse());
+//console.log('the min with travers is '+list.min_w_traverse());
+//console.log('the average with travers is '+list.average_w_traverse());
+console.log('the length with traverse is '+list.length_w_traverse());
+console.log('back value is '+list.back());
+console.log('removing the last value..');
+list.remove_back();
+list.display();
+console.log('adding a new node');
+list.add_back(22);
+list.display();
