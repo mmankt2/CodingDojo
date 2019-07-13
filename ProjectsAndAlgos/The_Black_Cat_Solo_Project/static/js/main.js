@@ -5,9 +5,9 @@ setTimeout(function() {
   $('.flash-messages').hide();
 }, 1000); 
 
-$('#show-login').click(function(){
-  $('#login-form').show();
-})
+//$('#show-login').click(function(){
+//  $('#login-form').show();
+//})
 
 $('#fn').keyup(delay(function(e){
   console.log('on keyup function');

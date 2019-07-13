@@ -30,7 +30,7 @@ email_regex = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 def index():
   return render_template('index.html')
 
-@app.route('/registeruser')
+@app.route('/login-register')
 def registration_page():
   return render_template('registration.html')
 
@@ -59,7 +59,7 @@ def register():
     user_info = mysql.query_db(query,q_data)
     if user_info:
       flash('Email already registered. Please login.')
-      return redirect('/registeruser')
+      return redirect('/login-register')
     pw_hash = bcrypt.generate_password_hash(pw)
     flash('Successfully added new user!')
     
@@ -80,7 +80,7 @@ def register():
     }
     fid = mysql.query_db(query,q_data)
   
-  return redirect('/registeruser')
+  return redirect('/login-register')
 
 @app.route('/login',methods=["POST"])
 def login():

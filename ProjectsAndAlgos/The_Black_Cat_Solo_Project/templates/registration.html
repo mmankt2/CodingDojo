@@ -5,15 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Users</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="../static/registration.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static',filename='css/registration.css')}}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="../static/main.js"></script>
+  <script src="{{url_for('static',filename='js/main.js')}}"></script>
 </head>
 <body>
-  <div id='header'>
-    <a href="/">Home</a>    
-  </div>
+  <div id='wrapper'>
+      <div id='header'>
+        <img src="{{url_for('static',filename='img/black-cat-banner.png')}}" alt="black cat banner">
+        <h1>Paul "The Black Cat" Littleton</h1>
+        <div id='home'><a href="/">Home</a></div>
+      </div>
+      <!--header-->
   <div id="messages">
     <p class='fn hidden'>Please enter a first name.</p>
     <p class='ln hidden'>Please enter a last name.</p>
@@ -72,5 +76,6 @@
       <input type="submit" value="Login">
     </p>
   </form>
+</div><!--wrapper-->
 </body>
 </html>
