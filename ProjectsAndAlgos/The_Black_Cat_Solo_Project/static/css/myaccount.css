@@ -13,6 +13,11 @@ form{
   vertical-align:top;
   margin-left:1%;
 }
+@media screen and (max-width:800px){
+  form{
+    width:98%;
+  }
+}
 #messages{
   margin:8px;
   font-size: 13px;
@@ -29,6 +34,11 @@ form{
   display:inline-block;
   width:57%;
   margin-left:1%;
+}
+@media screen and (max-width:800px){
+  #my_sessions{
+    width:98%;
+  }
 }
 .blue{
   color:rgb(0, 0, 255);
