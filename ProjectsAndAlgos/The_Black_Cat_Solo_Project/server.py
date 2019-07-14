@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 
 #below lines needed for google calendar API integration
 import datetime
+from datetime import timedelta
 import pickle
 import os.path
 import re 
@@ -25,7 +26,7 @@ bcrypt = Bcrypt(app)
 db='the_black_cat'
 
 #users:id, first name, last name, email, password, created at, updated at
-#sessions: id, day, time, session length, user_id, notes
+#sessions: id, datetime, session length, user_id, notes
 #blogs: id, content, user_id, created at, updated at
 #comments: id, content, user_id, blog_id, created_at, updated_at
 
@@ -77,7 +78,10 @@ def register():
       'email':email,
       'pw':pw_hash
     }
-    id = mysql.query_db(query,q_data)    
+    id = mysql.query_db(query,q_data)
+    session['user_email'] = email
+    session['first_name'] = fn
+    session['id'] = id    
   return redirect('/login-register')
 
 @app.route('/login',methods=["POST"])
@@ -124,11 +128,26 @@ def logout():
 
 @app.route('/myaccount/<id>')
 def edit(id):
+  print(session['id'])
+  #don't let someone get to this page if they're not logged in
+  if 'id' not in session:
+    return redirect('/')
+  #don't let someone get to this page if they're trying to get to a different ID
+  if int(id) != session['id']:
+    return redirect('/')
   mysql = connectToMySQL(db)
   query = "SELECT * from users where id = %(id)s;"
   q_data = { 'id':id}
   data = mysql.query_db(query,q_data)
-  return render_template('myaccount.html',id=id,data=data[0])
+
+  #get the client's session lists
+  mysql = connectToMySQL(db)
+  query = 'SELECT * from sessions where user_id = %(id)s and date_time > NOW() order by date_time;'
+  sessions = mysql.query_db(query,q_data)
+  print(sessions)
+  cancel_date = datetime.datetime.now()+timedelta(hours=1)*24
+
+  return render_template('myaccount.html',id=id,data=data[0],sessions=sessions, cancel_date=cancel_date)
 
 @app.route('/users/<id>/update', methods=["POST"])
 def update_user(id):
@@ -159,9 +178,10 @@ def delete(id):
 def blog():
   return render_template('blog-simple.html')
 
-@app.route('/personaltraining/schedulesession')
+@app.route('/personaltraining/calendar')
 def schedulesession():
   if 'id' not in session:
+    flash('Please login to view the calendar')
     return redirect('/personaltraining/schedulesession/login-register')
   return render_template('schedulesession.html')
 
@@ -196,8 +216,7 @@ def registerpt():
       flash('Email already registered. Please login.')
       return redirect('/personaltraining/schedulesession/login-register')
     pw_hash = bcrypt.generate_password_hash(pw)
-    flash('Successfully added new user!')
-    
+    #flash('Successfully added new user!')
     mysql=connectToMySQL(db)
     query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) values (%(fn)s,%(ln)s,%(email)s,%(pw)s,NOW(),NOW());"
     q_data = {
@@ -206,8 +225,12 @@ def registerpt():
       'email':email,
       'pw':pw_hash
     }
-    id = mysql.query_db(query,q_data)    
-  return redirect('/personaltraining/schedulesession')
+    id = mysql.query_db(query,q_data)
+    session['user_email'] = email
+    session['first_name'] = fn
+    session['id'] = id    
+    return redirect('/personaltraining/calendar')    
+  return redirect('/personaltraining/calendar')
 
 @app.route('/login-schedulesession',methods=["POST"])
 def loginpt():
@@ -239,15 +262,39 @@ def loginpt():
         session['user_email'] = email
         session['first_name'] = user_info[0]['first_name']
         session['id'] = user_info[0]['id']
-        return redirect('/personaltraining/schedulesession')
+        return redirect('/personaltraining/calendar')
       else:
         flash('Password or email is incorrect.')
         return redirect('/personaltraining/schedulesession/login-register')
-  return redirect('/personaltraining/schedulesession')
+  return redirect('/personaltraining/calendar')
 
-@app.route('/createevent')
+def recurring_event(argument):
+  switcher = {
+    'DAILY': timedelta(days=1),
+    'WEEKLY': timedelta(weeks=1)
+  }
+  return switcher.get(argument)
+
+@app.route('/createevent', methods=['POST'])
 def createevent():
   #get form data
+  startdate = request.form['date'] #string
+  starttime = datetime.datetime.strptime(request.form['time'],'%H:%M') #datetime
+  recurrence = request.form['recurrence'] #DAILY or WEEKLY
+  duration = request.form['length'] #string
+  starttimeTime = starttime.time().strftime('%H:%M') #string
+  occurrences = request.form['count'] #an integer from 1 to 20
+  
+  td = timedelta(hours=1) #datetime.timedelta
+  enddatetime = starttime + td * float(duration) #datetime
+  notes = request.form['notes']
+
+  startTime = startdate + 'T' + starttimeTime + ':00' #string
+  endtime = enddatetime.time().strftime('%H:%M') #string
+  endTime = startdate + 'T' + endtime + ':00' #string
+  print(startTime,endTime)
+
+  #the following section adds the event to the google calendar
   creds = None
   # The file token.pickle stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
@@ -270,26 +317,24 @@ def createevent():
   service = build('calendar', 'v3', credentials=creds)
 
   # Call the Calendar API
-  now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-
+  #now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
   event = {
-  'summary': 'Google I/O 2015',
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A chance to hear more about Google\'s developer products.',
+  'summary': session['first_name']+"'s session with Paul",
+  #'location': '800 Howard St., San Francisco, CA 94103',
+  #'description': 'A chance to hear more about Google\'s developer products.',
   'start': {
-      'dateTime': '2019-07-28T09:00:00-07:00',
-      'timeZone': 'America/Los_Angeles',
+      'dateTime': startTime,
+      'timeZone': 'America/Chicago',
   },
   'end': {
-      'dateTime': '2019-07-28T17:00:00-07:00',
-      'timeZone': 'America/Los_Angeles',
+      'dateTime': endTime,
+      'timeZone': 'America/Chicago',
   },
   'recurrence': [
-      'RRULE:FREQ=DAILY;COUNT=2'
+      'RRULE:FREQ='+recurrence+';COUNT='+occurrences
   ],
   'attendees': [
-      {'email': 'lpage@example.com'},
-      {'email': 'sbrin@example.com'},
+      {'email': session['user_email']}
   ],
   'reminders': {
       'useDefault': False,
@@ -299,10 +344,105 @@ def createevent():
       ],
   },
   }
-
   event = service.events().insert(calendarId=calendaridPT, body=event).execute()
+  print(event)
+  print(event['id'])
+
+  #if occurrences is greater than 1, get a date array so you can insert more events
+  num_occurrences = int(occurrences)
+  if num_occurrences > 1:
+    session_list = list(range(num_occurrences)) #initialize the list
+    session_list[0] = startdate #set the first element in the list to the start date
+    td_occurences = recurring_event(recurrence) #get a timedelta object to add for the recurring events
+    #fill the list of recurring sessions
+    for i in range(1,len(session_list)):
+      #this list converts the session_list[i] to a datetime object, then back to a string
+      session_list[i] = (datetime.datetime.strptime(session_list[i-1],'%Y-%m-%d') + td_occurences).strftime('%Y-%m-%d')
+    for i in range(len(session_list)):
+      recurringStartTime = session_list[i]+'T'+starttimeTime+':00' #string
+      mysql = connectToMySQL(db)
+      query = "INSERT INTO sessions (google_event_id,date_time, session_length, user_id, notes, created_at, updated_at) values (%(eventId)s,%(startTime)s,%(duration)s,%(id)s,%(notes)s,NOW(),NOW());"
+      q_data = {
+        'eventId':event['id'],
+        'startTime':recurringStartTime,
+        'duration':float(duration)*60,
+        'id':session['id'],
+        'notes':notes
+      }  
+      session_id = mysql.query_db(query,q_data)    
+  else:
+    mysql = connectToMySQL(db)
+    query = "INSERT INTO sessions (google_event_id,date_time, session_length, user_id, notes, created_at, updated_at) values (%(eventId)s,%(startTime)s,%(duration)s,%(id)s,%(notes)s,NOW(),NOW());"
+    q_data = {
+      'eventId':event['id'],
+      'startTime':startTime,
+      'duration':float(duration)*60,
+      'id':session['id'],
+      'notes':notes
+    }  
+    session_id = mysql.query_db(query,q_data)
+
   return redirect('/personaltraining/calendar')
 
+@app.route('/delete_session/<id>', methods =['POST'])
+def delete_session(id):
+  mysql = connectToMySQL(db)
+  query = "DELETE from sessions where id = %(id)s;"
+  q_data = {'id':id}
+  mysql.query_db(query,q_data)
+  flash('Session deleted. Contact Paul to remove from his calendar.')
+  return redirect('/myaccount/'+str(session['id']))
+
+@app.route('/reschedule_session/<id>')
+def reschedule_template(id):
+  mysql = connectToMySQL(db)
+  query = "SELECT * from sessions where id = %(id)s;"
+  q_data = {'id':id}
+  session_data = mysql.query_db(query,q_data)
+  session_data = session_data[0]
+  session_data['date'] = session_data['date_time'].strftime('%Y-%m-%d')
+  session_data['time'] = session_data['date_time'].strftime('%H:%M')
+  print(session_data)
+
+  #get the client's session lists
+  mysql = connectToMySQL(db)
+  query = 'SELECT * from sessions where user_id = %(id)s and date_time > NOW() order by date_time;'
+  q_data = {'id':session['id']}
+  sessions = mysql.query_db(query,q_data)
+  cancel_date = datetime.datetime.now()+timedelta(hours=1)*24
+  return render_template('reschedule_session.html',session_data = session_data, sessions=sessions, cancel_date = cancel_date)
+
+@app.route('/reschedule_session/<id>/update', methods=["POST"])
+def reschedule_session(id):
+  #get form data
+  print(request.form)
+  startdate = request.form['date'] #string
+  starttime = datetime.datetime.strptime(request.form['time'],'%H:%M') #datetime
+  #recurrence = request.form['recurrence'] #DAILY or WEEKLY
+  duration = request.form['length'] #string
+  notes = request.form['notes']
+  
+  starttimeTime = starttime.time().strftime('%H:%M') #string
+  #occurrences = request.form['count'] #an integer from 1 to 20
+  
+  td = timedelta(hours=1) #datetime.timedelta
+  enddatetime = starttime + td * float(duration) #datetime
+  
+  startTime = startdate + 'T' + starttimeTime + ':00' #string
+  endtime = enddatetime.time().strftime('%H:%M') #string
+  endTime = startdate + 'T' + endtime + ':00' #string
+  print(startTime,endTime)
+
+  mysql = connectToMySQL(db)
+  query = "UPDATE sessions set date_time = %(startTime)s, session_length = %(duration)s, notes = %(notes)s, updated_at = NOW() where id = %(id)s;"
+  q_data = {
+    'startTime':startTime,
+    'duration':float(duration)*60,
+    'notes':notes,
+    'id':id
+  }  
+  mysql.query_db(query,q_data)
+  return redirect('/myaccount/'+str(session['id']))
 
 if __name__ == "__main__":
   app.run(debug=True)

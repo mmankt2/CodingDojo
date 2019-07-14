@@ -21,6 +21,7 @@
 <li><a href="#">Two</a></li>-->
 {% if 'id' in session %}
 <li><a href="/myaccount/{{session.id}}">Welcome, {{session.first_name}}</a></li>
+<li><a href="/logout">Logout</a></li>
 {% endif %}
 <li><a href="/login-register">Login | Register</a></li>
 </ul>
@@ -84,7 +85,7 @@
 </ul>
 <h4>Personal Training</h4>
 <ul>
-<li><a href="/personaltraining/schedulesession">Schedule a session</a></li>
+<li><a href="/personaltraining/calendar">Schedule a session</a></li>
 <li><a href="/personaltraining#methods">Methods</a></li>
 <li><a href="/personaltraining#programs">Programs</a></li>
 <li><a href="/personaltraining#stories">Stories</a></li>

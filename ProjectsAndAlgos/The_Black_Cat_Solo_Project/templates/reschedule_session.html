@@ -3,13 +3,13 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>The Black Cat|My Account</title>
+      <title>The Black Cat|Reschedule</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
       <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static',filename='css/myaccount.css')}}" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="{{url_for('static',filename='js/main.js')}}"></script>
+      <script src="{{url_for('static',filename='js/session.js')}}"></script>
     </head>
 <body>
 
@@ -32,15 +32,10 @@
 
 <div class="callout large primary">
     <div class="text-center">
-    <h1>My Account</h1>
+    <h1>Reschedule Session</h1>
     </div>
     </div>
     <div id="messages">
-        <p class='fn hidden'>Please enter a first name.</p>
-        <p class='ln hidden'>Please enter a last name.</p>
-        <p class='email hidden'>Please enter a valid email address.</p>
-        <p class='password hidden'>Password must have at least 8 characters, one uppercase, one lowercase, and one number.</p>
-        <p class='cpassword hidden'>Passwords don't match.</p>
         <div class='flash-messages'>
         {% with messages = get_flashed_messages() %}
           <!-- declare a variable called messages -->
@@ -56,22 +51,26 @@
         </div>
       </div>
       
-  <form action="/users/{{id}}/update" method="POST">
-    <p> <label for="fn">First Name</label>
-      <input type="text" name="first_name" id="fn" class="form-control" value="{{data.first_name}}">
-    </p>
-    <p><label for="ln">Last Name</label>
-      <input type="text" name="last_name" id="ln" class="form-control" value="{{data.last_name}}">
-    </p>
-    <p>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" class="form-control" value="{{data.email}}">
-    </p>
-    <p>
-      <input type="submit" value="Update">
-    </p>
-    <div><p>  Or you can <a href="/users/{{id}}/destroy">delete your account</a>.  There's no going back...</p></div>
+  <form action="/reschedule_session/{{session_data.id}}/update" method="POST">
+    <input type="hidden" name="info" id="clientinfo">
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date" min="2019-07-01" value='{{session_data.date}}'>
+    <label for="time">Time</label>
+    <input type="time" name="time" id="time" value='{{session_data.time}}'>
+    <label for="notes">Notes, Goals, etc</label>
+    <input type="text" name="notes" id="notes" value='{{session_data.NOTES}}'>
+    
+    {% if session_data.session_length == 30%}
+      <input type="radio" name="length" value="0.5" checked> 30 Minutes
+      <input type="radio" name="length" value="1" > 60 minutes<br>
+    {% else %}
+    <input type="radio" name="length" value="0.5" > 30 Minutes
+    <input type="radio" name="length" value="1" checked> 60 minutes<br>
+    {% endif %}
+    <input type="checkbox" name="reminder" value="True"> Receive email reminder<br>
+    <input type="submit" value="Reschedule">
   </form>
+
   <div id="my_sessions">
     <h6>Scheduled Sessions</h6>
     <table class="table hover">
@@ -93,7 +92,7 @@
           </form>
           <a href="/reschedule_session/{{event.id}}"> Reschedule</a>
           </td>
-          {% else %}
+          {% else %}  
           <td></td>
           {% endif %}
         </tr>
