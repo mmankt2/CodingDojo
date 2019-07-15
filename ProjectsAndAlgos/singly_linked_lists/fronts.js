@@ -3,6 +3,9 @@ class Node {
   constructor(value){
     this.value = value;
     this.next = null;
+    this.front = function(){
+      //more functions here
+    }
   }
 }
 
@@ -258,6 +261,82 @@ class List {
     return this;
   }
 
+  //second to last value
+  second_to_last(){
+    //check if the list has more than one value in it, else
+    let current = this.head;
+
+    while(current.next){
+      if (current.next.next == null){
+        return current.value;
+      }
+      current = current.next;
+    }
+    return current.next;//returns null if current.next is null} 
+  }
+
+  //delete given node
+  removeSelf(val){
+    let current = this.head;
+
+    while(current){
+      if(current.next.value == val){
+        break;
+      }
+      current = current.next;
+    }
+    if (current.next.next){
+      current.next = current.next.next;
+    }
+    else {
+      current.next = null;
+    }
+    return this;
+  }
+
+  //copy
+  copyList(){
+    let current = this.head;
+    let array = [];
+
+    while(current){
+      array.push(current.value);
+      current = current.next;
+    }
+    const newlist = new List();
+    //loop through the array to make a new list
+    for (let index = 0; index < array.length; index++){
+      const value = array[index];
+      newlist.add(value);
+    }
+    return newlist;
+  }
+
+  filter(lowVal,highVal){
+    let current = this.head;
+    let previous = this.head;
+
+    while(current){
+
+      if(current.value < lowVal && current != this.head){
+        previous.next = current.next;
+        current = previous;
+      }
+      if(current.value > highVal && current != this.head){
+        previous.next = current.next;
+        current = previous;
+      }
+      if(current.value > highVal && current == this.head){
+        this.head = current.next;
+      }
+      if(current.value < lowVal && current == this.head){
+        this.head = current.next;
+      }
+      previous = current;
+      current = current.next;
+    }
+    return this;
+  }
     
 }
 
@@ -278,38 +357,47 @@ list.add(9);
 console.log(list.front());
 
 //use a loop to create nodes from an array
-for (let index = 0; index < array.length; index++){
-  const value = array[index];
+ for (let index = 0; index < array.length; index++){
+   const value = array[index];
   console.log('adding value '+value);
   list.add(value);
 }
-console.log(list);
-list.display();
-console.log('contains 7? ' + list.contains(7));
-console.log(list.remove());
-list.display();
-console.log('contains 7? '  + list.contains(7));
+// console.log(list);
+// list.display();
+// console.log('contains 7? ' + list.contains(7));
+// console.log(list.remove());
+// list.display();
+// console.log('contains 7? '  + list.contains(7));
 
 
 
-console.log('the max value is '+list.max());
-console.log('the min value is '+list.min());
-console.log('the average is '+list.average());
+// console.log('the max value is '+list.max());
+// console.log('the min value is '+list.min());
+// console.log('the average is '+list.average());
 
 //console.log('the max with travers is '+list.max_w_traverse());
 //console.log('the min with travers is '+list.min_w_traverse());
 //console.log('the average with travers is '+list.average_w_traverse());
-console.log('the length with traverse is '+list.length_w_traverse());
-console.log('back value is '+list.back());
-console.log('removing the last value..');
-list.remove_back();
+// console.log('the length with traverse is '+list.length_w_traverse());
+// console.log('back value is '+list.back());
+// console.log('removing the last value..');
+// list.remove_back();
+// list.display();
+// console.log('adding a new node');
+// list.add_back(22);
+// list.display();
+// console.log('adding 99 to list before 22');
+// list.prependVal(99,22).display();
+// console.log('appending val after 50');
+// list.appendVal(100,50).display();
+// console.log('removing value 100');
+// list.removeVal(100).display();
+//console.log('getting second to last value')
 list.display();
-console.log('adding a new node');
-list.add_back(22);
-list.display();
-console.log('adding 99 to list before 22');
-list.prependVal(99,22).display();
-console.log('appending val after 50');
-list.appendVal(100,50).display();
-console.log('removing value 100');
-list.removeVal(100).display();
+// console.log(list.second_to_last());
+// console.log('removing node 6');
+// list.removeSelf(6).display();
+// const list_copy = list.copyList();
+// console.log('list_copy: ');
+// list_copy.display();
+list.filter(8,9).display();
