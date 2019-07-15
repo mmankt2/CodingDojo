@@ -65,7 +65,6 @@ class List {
     }
     console.log('finished printing list');
   }
-  
 
   //min
   min(){
@@ -111,7 +110,6 @@ class List {
     return sum/length;
   } 
 
-
   //a function that has a common format used to traverse SLs
   traverse(callback){
     let current = this.head;
@@ -155,7 +153,7 @@ class List {
     }
   }
   
-    //add back
+  //add back
   add_back(back_value){
     let current = this.head;
     while(current){
@@ -166,7 +164,6 @@ class List {
     }
     current.next = new Node(back_value);
   }
-
 
   max_w_traverse(){
     let max = this.head ? this.head.value:null;
@@ -200,6 +197,65 @@ class List {
     //   sum += node.value;
     // })
     return sum/length;
+  }
+
+  //prepend val
+  prependVal(val,before){
+    //const ListNode = new Node(val);
+    let current = this.head;
+
+    while(current){
+      if(current.next == null){
+        break;
+      }
+      if(current.next.value == before){
+        break;
+      }
+      current = current.next;
+    }
+
+    let hold = current.next;
+    current.next = new Node(val);
+    current.next.next = hold;
+    return this;
+  }
+
+  appendVal(val,after){
+    let current = this.head;
+
+    while(current){
+      if(current.next == null){
+        break;
+      }
+      if(current.value == after){
+        break;
+      }
+      current = current.next;
+    }
+    
+    let hold = current.next;
+    current.next = new Node(val);
+    current.next.next = hold;
+    return this;
+  }
+
+  //remove val
+  removeVal(val){
+    let current = this.head;
+    while(current){
+      if(current.next.value == val){
+        break;
+      }
+      current = current.next;
+    }
+    if (current.next.next){
+      current.next = current.next.next;
+    }
+    else {
+      current.next = null;
+    }
+    
+    return this;
   }
 
     
@@ -251,3 +307,9 @@ list.display();
 console.log('adding a new node');
 list.add_back(22);
 list.display();
+console.log('adding 99 to list before 22');
+list.prependVal(99,22).display();
+console.log('appending val after 50');
+list.appendVal(100,50).display();
+console.log('removing value 100');
+list.removeVal(100).display();
