@@ -47,14 +47,13 @@ function floodFill(canvas,startXY,newColor,oldColor){
   if(x+1 < canvas[0].length){
     floodFill(canvas,[x+1,y],newColor,oldColor);
   }
-  if(x-1 >= 0){
-    floodFill(canvas,[x-1,y],newColor,oldColor);
-  }
-  
   if(y+1 < canvas.length){
     floodFill(canvas,[x,y+1],newColor,oldColor);
   }
-  if(y-1 >= 0){
+  if(x-1 >= 0){
+    floodFill(canvas,[x-1,y],newColor,oldColor);
+  }
+  if(y -1 >= 0){
     floodFill(canvas,[x,y-1],newColor,oldColor);
   }
   return canvas;
@@ -68,7 +67,7 @@ const canvas = [
   [6,5,3,4,1],
   [1,2,3,3,3]
 ];
-startXY = [3,2];
+startXY = [2,2];
 newColor = 10;
 console.log(canvas);
 console.log(floodFill(canvas, startXY, newColor));
