@@ -56,7 +56,6 @@ function floodFill(canvas,startXY,newColor,oldColor){
   if(y -1 >= 0){
     floodFill(canvas,[x,y-1],newColor,oldColor);
   }
-  return canvas;
 }
 const canvas = [
   [3,3,3,3,3],
@@ -71,3 +70,71 @@ startXY = [2,2];
 newColor = 10;
 console.log(canvas);
 console.log(floodFill(canvas, startXY, newColor));
+
+//To Do 3
+//Recursive binary search
+function rBinarySearch(arr,value,index){
+  if (index == undefined){
+    index = 0;
+  }
+  if(arr[index] == value){
+    return true;
+  }
+
+  index = index + 1;
+  if (index <= arr.length){
+    return rBinarySearch(arr,value,index);
+  }
+  
+  if (index >= arr.length-1){
+    return false;
+  }
+}
+console.log(rBinarySearch([1,3,5,6],4));
+
+//greatest common factor
+function rGCF(num1,num2){
+  if(num1 == num2){
+    return num1;
+  }
+  if(num1 > num2){
+    return rGCF(num1-num2,num2);
+  }
+  if(num2 > num1){
+    return rGCF(num1,num2-num1);
+  }
+}
+console.log(rGCF(25689,987654));
+
+//tarai
+function tarai(x,y,z){
+  if (x <= y){
+    return y;
+  }
+  else {
+    return tarai(tarai(x-1,y,z),tarai(y-1,z,x),tarai(z-1,x,y));
+  }
+}
+//console.log(tarai(10,2,9));
+
+//string: in-order subsets
+function strSubsets(string,array,index,substring){
+  if(array == undefined){
+    array = [];
+  }
+  if (index ==undefined){
+    index = 0;
+  }
+  if (substring ==undefined){
+    substring = "";
+  }
+  array.push(substring);
+  substring += string[index];
+  index += 1;
+
+  if (index <= string.length){
+    return strSubsets(string,array,index,substring);
+  }
+  return array;
+}
+console.log(strSubsets("abc"));
